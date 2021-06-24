@@ -1,13 +1,13 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img src="../assets/icons/cancel.png" class="cancel" />
+      <img src="../../assets/icons/cancel.png" class="cancel" />
       <h3>Delete User</h3>
 
       <div class="form-wrapper">
         <div class="line">
           <div class="icon">
-            <img src="../assets/icons/boy.png" />
+            <img src="../../assets/icons/boy.png" />
           </div>
           <div class="userInfo">
             <button class="dropbtn">

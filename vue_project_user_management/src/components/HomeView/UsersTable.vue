@@ -13,13 +13,13 @@
   <tbody>
     <tr>
       <td class="thumbnail">
-         <img src="../assets/icons/user.png"/>
+         <img src="../../assets/icons/user.png"/>
       </td>
       <td><div class="user-info"><span>Mark</span><p>Mark@test.com</p></div></td>
       <td>
           <div class="td-role">
           <div class="admin-div">
-              <img src="../assets/icons/key.png"/>
+              <img src="../../assets/icons/key.png"/>
           </div>
           <p>Admin</p>
           </div>
@@ -34,8 +34,8 @@
       <td class="td-actions">
           <div class="cont-wrapper">
           <div class="actions">
-              <img class ="settings-img" src="../assets/icons/settings.png"/>
-              <img class="recycleBin-img" src="../assets/icons/recycle.png"/>
+              <img class ="settings-img" src="../../assets/icons/settings.png"/>
+              <img class="recycleBin-img" src="../../assets/icons/recycle.png"/>
           </div>
           </div>
       </td>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import ToggleButton from './ToggleButton.vue'
+import ToggleButton from '../ToggleButton.vue'
 
 export default {
   name: 'UsersTable',

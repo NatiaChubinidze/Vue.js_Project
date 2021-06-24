@@ -12,11 +12,11 @@
 
 <script>
 // @ is an alias to /src
-import HomeHeader from '@/components/HomeHeader.vue'
-import UsersTable from '@/components/UsersTable.vue'
-import Pagination from '@/components/Pagination.vue'
-import InvitationBox from '@/components/Invitation.vue'
-import DeleteUser from '@/components/DeleteUser.vue'
+import HomeHeader from '@/components/HomeView/HomeHeader.vue'
+import UsersTable from '@/components/HomeView/UsersTable.vue'
+import Pagination from '@/components/HomeView/Pagination.vue'
+import InvitationBox from '@/components/HomeView/Invitation.vue'
+import DeleteUser from '@/components/HomeView/DeleteUser.vue'
 
 
 export default {

@@ -6,7 +6,7 @@
   <button class="btn light" >
     5
   </button>
-  <img src="../assets/icons/down-arrow.png" class="arrow"/>
+  <img src="../../assets/icons/down-arrow.png" class="arrow"/>
   <ul class="dropdown-menu" >
     <li><a class="dropdown-item" href="#">3</a></li>
     <li><a class="dropdown-item" href="#">5</a></li>

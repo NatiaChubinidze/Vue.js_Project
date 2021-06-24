@@ -1,30 +1,30 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img src="../assets/icons/cancel.png" class="cancel" />
+      <img src="../../assets/icons/cancel.png" class="cancel" />
       <h3>Invite New User</h3>
       <form>
         <div class="form-wrapper">
           <div class="line">
             <div class="icon">
-              <img src="../assets/icons/boy.png" class="img" />
+              <img src="../../assets/icons/boy.png" class="img" />
             </div>
             <input type="text" class="firstName" placeholder="* First Name" />
             <input type="text" class="lastName" placeholder="* Last Name" />
           </div>
           <div class="line">
             <div class="icon">
-              <img src="../assets/icons/arroba.png" class="img" />
+              <img src="../../assets/icons/arroba.png" class="img" />
             </div>
             <input type="email" class="email" placeholder="* Email" />
           </div>
           <div class="line">
             <div class="icon">
-              <img src="../assets/icons/role_key.png" />
+              <img src="../../assets/icons/role_key.png" />
             </div>
             <div class="dropdown">
               <button class="dropbtn">* Role</button>
-              <img src="../assets/icons/down-arrow.png" class="arrow" />
+              <img src="../../assets/icons/down-arrow.png" class="arrow" />
               <div class="dropdown-content">
                 <a href="#">Admin</a>
                 <a href="#">User</a>

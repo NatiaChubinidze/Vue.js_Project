@@ -5,7 +5,7 @@
     <h1 class="title">Project Access </h1>
     <div>
     <input type="text" class="search" placeholder="Type to filter the table">
-    <img src="../assets/icons/search.png" class="search-icon"/>
+    <img src="../../assets/icons/search.png" class="search-icon"/>
     </div>
 </div>
 </div>
