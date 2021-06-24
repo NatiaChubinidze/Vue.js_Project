@@ -2,9 +2,15 @@
   <div class="about">
     <SettingsHeader/>
     <div class="flex-wrapper">
-      <UserInfo/>
-      <UserDetails/>
-      <UserPermissions/>
+      <div class="userInfo">
+         <UserInfo/>
+      </div>
+       <div class="userDetails">
+          <UserDetails/>
+       </div>
+        <div class="userPermissions">
+               <UserPermissions/>
+        </div>
     </div>
   </div>
 </template>
@@ -36,7 +42,20 @@ export default {
 .flex-wrapper{
   width:100%;
   display: flex;
-  flex-direction: column;
-  align-items: space-between;
+ 
+  justify-content: space-between;
+}
+.userInfo{
+width:32%;
+height:fit-content;
+}
+.userDetails{
+width:32%;
+height:fit-content;
+}
+
+.userPermissions{
+width:36%;
+height:fit-content;
 }
 </style>
