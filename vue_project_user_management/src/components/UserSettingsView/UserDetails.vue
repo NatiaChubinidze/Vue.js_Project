@@ -55,7 +55,7 @@ export default {
   flex-direction: column;
   padding: 40px 50px;
   border: 1px solid rgb(228, 23, 23);
-justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
 }
 h3 {
@@ -189,17 +189,17 @@ input::placeholder {
   margin-bottom: 10px;
 }
 .save {
- height: 59px;
+  height: 59px;
   padding: 5px;
- background: #44A0D3 0% 0% no-repeat padding-box;
-box-shadow: 0px 3px 6px #00000029;
-border-radius: 100px;
+  background: #44a0d3 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 100px;
 
   font: normal normal 600 16px/21px Segoe UI;
-letter-spacing: 0px;
-color: #FFFFFF;
+  letter-spacing: 0px;
+  color: #ffffff;
   width: 209px;
   border: 0px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 </style>
