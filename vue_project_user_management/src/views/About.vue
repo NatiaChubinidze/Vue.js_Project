@@ -48,15 +48,12 @@ export default {
 }
 .userInfo{
 width:32%;
-height:100%;
 }
 .userDetails{
 width:32%;
-height:100%;
 }
 
 .userPermissions{
 width:36%;
-height:100%;
 }
 </style>
