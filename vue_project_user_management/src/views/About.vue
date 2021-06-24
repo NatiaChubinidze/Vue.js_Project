@@ -9,7 +9,7 @@
           <UserDetails/>
        </div>
         <div class="userPermissions">
-               <UserPermissions/>
+               <UserPermission/>
         </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
  import SettingsHeader from '@/components/UserSettingsView/SettingsHeader.vue'
  import UserInfo from '@/components/UserSettingsView/UserInfo.vue'
  import UserDetails from '@/components/UserSettingsView/UserDetails.vue'
- import UserPermissions from '@/components/UserSettingsView/UserPermissions.vue'
+ import UserPermission from '@/components/UserSettingsView/UserPermission.vue'
 
 
 export default {
@@ -29,7 +29,7 @@ export default {
     SettingsHeader,
     UserInfo,
     UserDetails,
-    UserPermissions
+    UserPermission
   }
 }
 </script>
@@ -41,21 +41,22 @@ export default {
 }
 .flex-wrapper{
   width:100%;
+  height:fit-content;
   display: flex;
- 
   justify-content: space-between;
+  background-color: #f3f3f3;
 }
 .userInfo{
 width:32%;
-height:fit-content;
+height:100%;
 }
 .userDetails{
 width:32%;
-height:fit-content;
+height:100%;
 }
 
 .userPermissions{
 width:36%;
-height:fit-content;
+height:100%;
 }
 </style>

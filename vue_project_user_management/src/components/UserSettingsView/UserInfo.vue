@@ -1,17 +1,95 @@
 <template>
-
+  <div class="wrapper">
+    <div class="box">
+      <img src="../../assets/icons/profile-pic.png" class="profile-pic" />
+      <div class="admin-div">
+        <img src="../../assets/icons/key.png" />
+      </div>
+    </div>
+    <span>Upload a Photo</span>
+    <p class="name">Danniel Blichman</p>
+    <p class="email">danniel.blichman@testtask.com</p>
+    <button class="submit-btn">Resend the invite</button>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'UserInfo',
+  name: "UserInfo",
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 90px;
+  align-items: center;
+  border:1px solid black;
+}
+.box {
+  position: relative;
+  width:232px;
+  margin:0 auto;
+  height: fit-content;
+}
+.profile-pic {
+  width: 100%;
+}
+.admin-div {
+  position: absolute;
+  width: 77px;
+  height: 51px;
+  background-color: #7e7ef1;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  left: 160px;
+}
+.admin-div img {
+  width: 24px;
+  height: 24px;
+}
+.wrapper span{
+  text-transform: uppercase;
+  margin-top:10px;
+  font: normal normal 300 14px/19px Segoe UI;
+letter-spacing: 0px;
+color: #B0ACAC;
+}
+.name{
+  font: normal normal 600 48px/48px Segoe UI;
+letter-spacing: 0px;
+color: #000000;
+size:48px;
+font-style: 600;
+}
+.email{
+font: normal normal 300 16px/21px Segoe UI;
+letter-spacing: 0px;
+color: #000000;
+}
+.submit-btn{
+  height: 59px;
+  padding: 5px;
+  background: #7E7EF1 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #00000029;
+border-radius: 100px;
+  font: normal normal 600 16px/21px Segoe UI;
+letter-spacing: 0px;
+color: #FFFFFF;
+  width: 209px;
+  border: 0px;
+  margin:0 auto;
+}
 
 </style>
