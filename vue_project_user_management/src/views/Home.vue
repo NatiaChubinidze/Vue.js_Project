@@ -5,7 +5,8 @@
     <UsersTable msg="Welcome to Your Vue.js App"/>
     <Pagination msg="Welcome to Your Vue.js App"/>
   </div>
-  <InvitationBox class="invitation"/>
+  <!-- <InvitationBox class="pop-up"/> -->
+  <DeleteUser class="pop-up"/>
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import HomeHeader from '@/components/HomeHeader.vue'
 import UsersTable from '@/components/UsersTable.vue'
 import Pagination from '@/components/Pagination.vue'
 import InvitationBox from '@/components/Invitation.vue'
+import DeleteUser from '@/components/DeleteUser.vue'
 
 
 export default {
@@ -23,7 +25,8 @@ export default {
     HomeHeader,
     UsersTable,
     Pagination,
-    InvitationBox
+    InvitationBox,
+    DeleteUser,
   }
 }
 </script>
@@ -38,7 +41,7 @@ export default {
   position:relative;
   z-index:-1;
 }
-.invitation{
+.pop-up{
   position:relative;
   z-index:100;
 }
