@@ -25,7 +25,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box{
-    height:190px
+    height:150px
 }
 .header{
     width:100%;

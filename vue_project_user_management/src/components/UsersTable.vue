@@ -65,8 +65,8 @@ export default {
 <style scoped>
 .wrapper{
     width:100%;
-    padding:0px 10% 10px 6%;
-   
+    padding:50px 10% 10px 6%;
+   background-color: #f3f3f3;
 }
 
 table th{
