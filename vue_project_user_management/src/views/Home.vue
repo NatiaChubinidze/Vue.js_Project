@@ -1,9 +1,7 @@
 <template>
-  <!-- <div class="home background-grey"> -->
-    <!-- <div class="wrapper toBack"> -->
     <div v-bind:class="showDeletionWindow || showAddUsers ? 'home background-grey' : 'home'">
     <div v-bind:class="showDeletionWindow || showAddUsers ? 'wrapper toBack' : 'wrapper'">
-    <HomeHeader  @toggleAddUser="changeAddUserOption($event)"/>
+    <HomeHeader @toggleAddUser="changeAddUserOption($event)"/>
     <UsersTable :users="users" @toggleDelete="changeDeletionPopUp($event)"/>
     <Pagination msg="Welcome to Your Vue.js App"/>
   </div>
