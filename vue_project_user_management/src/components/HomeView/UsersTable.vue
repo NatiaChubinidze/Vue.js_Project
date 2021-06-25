@@ -55,7 +55,7 @@
                 <img
                   class="recycleBin-img"
                   src="../../assets/icons/recycle.png"
-                  v-on:click="toggleDeletionOption"
+                  v-on:click="toggleDeletionOption(user)"
                 />
               </div>
             </div>
@@ -114,6 +114,7 @@ export default {
     usersArray: function() {
       console.log("users changed table compoennt");
       this.users=[...this.usersArray];
+      console.log(this.users);
     },
   },
 
@@ -127,8 +128,8 @@ export default {
         },
       });
     },
-    toggleDeletionOption() {
-      this.$emit("toggleDelete", true);
+    toggleDeletionOption(user) {
+      this.$emit("toggleDelete",user);
     },
     sortByUser() {
       this.users.sort((a, b) =>

@@ -19,7 +19,7 @@
         @activeUser="setActiveUser($event)"
         @toggleDelete="changeDeletionPopUp($event)"
       />
-      <Pagination/>
+      <Pagination />
     </div>
     <InvitationBox
       @visibilityChange="changeAddUserOption($event)"
@@ -27,8 +27,10 @@
       @inviteUser="addNewUser($event)"
     />
     <DeleteUser
-      @toggleDeletion="changeDeletionPopUp($event)"
-      v-bind:class="showDeletionWindow ? 'pop-up' : 'd-none'"
+      :user="activeUser"
+      @deleteUser="deleteConcreteUser($event)"
+      @toggleDeletion="closeDeletionPopUp($event)"
+      v-bind:class="showDeletionWindow===true ? 'pop-up' : 'd-none'"
     />
   </div>
 </template>
@@ -60,10 +62,14 @@ export default {
       activeUser: {},
     };
   },
- 
+
   methods: {
     changeDeletionPopUp(event) {
-      this.showDeletionWindow = event;
+      this.showDeletionWindow = true;
+      this.activeUser={...event};
+    },
+    closeDeletionPopUp(event){
+      this.showDeletionWindow=event;
     },
     changeAddUserOption(event) {
       this.showAddUsers = event;
@@ -75,15 +81,31 @@ export default {
       this.activeUser = { ...event };
       console.log("active user is set");
     },
-    addNewUser(event){
+    addNewUser(event) {
       console.log("adding new user to the database...");
       USERS.unshift(event);
       console.log(USERS);
-      this.users=[...USERS];
-      this.$forceUpdate(); 
+      this.users = [...USERS];
+      this.$forceUpdate();
       //It's not re-rendering automatically, so I had to force an update
       console.log("forced...", USERS);
       console.log(this.users);
+    },
+    deleteConcreteUser(event){
+      let elementIndex;
+      USERS.forEach(user=>{
+        if(user.id===event.id){
+          elementIndex=USERS.indexOf(user);
+        }
+      });
+      if(elementIndex>=0){
+        USERS.splice(elementIndex,1);
+      }
+      console.log(USERS);
+      
+      this.users=[...USERS];
+      this.$forceUpdate();
+      this.showDeletionWindow=false;
     }
   },
 };

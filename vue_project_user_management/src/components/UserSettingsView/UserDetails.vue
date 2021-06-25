@@ -71,13 +71,14 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 40px 50px;
-  align-items: center;
+  align-items: flex-start;
 }
 h3 {
   font: normal normal 600 36px/48px Segoe UI;
   letter-spacing: 0px;
   color: #000000;
   margin-bottom: 40px;
+  margin-left:20px;
 }
 .flex-box {
   width: 210px;
@@ -89,7 +90,7 @@ h3 {
 .flex-box p {
   font-size: 16px;
   font-family: "Segoe UI";
-  width: fit-content;
+  width: 220px;
   margin: 0px;
 }
 .flex-box p span {
@@ -217,6 +218,6 @@ input::placeholder {
   color: #ffffff;
   width: 209px;
   border: 0px;
-  margin: 70px auto;
+  margin: 74px 15px;
 }
 </style>

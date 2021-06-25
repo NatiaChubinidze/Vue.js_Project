@@ -15,16 +15,16 @@
           </div>
           <div class="userInfo">
             <button class="dropbtn">
-              <span> Samantha Stenford </span>
+              <span> {{user.name}} </span>
             </button>
           </div>
           <div class="activeUser">
-            <span>Active User</span>
+            <span>{{user.status==="active"?'Active User':'Inactive User'}}</span>
           </div>
         </div>
 
         <div class="final-section">
-          <button class="delete-btn">Delete User</button>
+          <button class="delete-btn" @click="deleteUser">Delete User</button>
         </div>
       </div>
     </div>
@@ -34,12 +34,17 @@
 <script>
 export default {
   name: "DeleteUser",
-  props: {},
+  props: {
+    user:Object
+  },
   methods: {
     emitVisibility() {
       console.log("toggle deletion false");
       this.$emit("toggleDeletion", false);
     },
+    deleteUser(){
+      this.$emit('deleteUser',this.user);
+    }
   },
 };
 </script>
