@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <h3>Permissions</h3>
+    <span class="role-title">Admin</span>
     <div class="super-admin">
       <p>Super Admin</p>
       <div class="toggleBtn">
@@ -224,8 +225,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 40px 10px;
-  border: 1px solid rgb(23, 228, 132);
+  padding: 40px 30px;
   align-items: flex-start;
 }
 h3 {
@@ -328,5 +328,11 @@ hr {
 .flex-wrapper {
   display: flex;
   justify-content: flex-start;
+}
+
+.role-title{
+  position:absolute;
+  top:220px;
+  right:65px;
 }
 </style>

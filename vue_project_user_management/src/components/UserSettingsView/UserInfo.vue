@@ -31,12 +31,11 @@ export default {
   flex-direction: column;
   padding: 40px 90px;
   align-items: center;
-  border:1px solid black;
 }
 .box {
   position: relative;
-  width:232px;
-  margin:0 auto;
+  width: 232px;
+  margin: 0 auto;
   height: fit-content;
 }
 .profile-pic {
@@ -59,37 +58,39 @@ export default {
   width: 24px;
   height: 24px;
 }
-.wrapper span{
+.wrapper span {
   text-transform: uppercase;
-  margin-top:10px;
+  margin-top: 20px;
+  margin-bottom:40px;
   font: normal normal 300 14px/19px Segoe UI;
-letter-spacing: 0px;
-color: #B0ACAC;
+  letter-spacing: 0px;
+  color: #b0acac;
 }
-.name{
+.name {
   font: normal normal 600 48px/48px Segoe UI;
-letter-spacing: 0px;
-color: #000000;
-size:48px;
-font-style: 600;
+  letter-spacing: 0px;
+  color: #000000;
+  size: 48px;
+  font-style: 600;
 }
-.email{
-font: normal normal 300 16px/21px Segoe UI;
-letter-spacing: 0px;
-color: #000000;
+.email {
+  font: normal normal 300 16px/21px Segoe UI;
+  letter-spacing: 0px;
+  color: #000000;
+  margin-top:5px;
+  margin-bottom:47px;
 }
-.submit-btn{
+.submit-btn {
   height: 59px;
   padding: 5px;
-  background: #7E7EF1 0% 0% no-repeat padding-box;
-box-shadow: 0px 3px 6px #00000029;
-border-radius: 100px;
+  background: #7e7ef1 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 100px;
   font: normal normal 600 16px/21px Segoe UI;
-letter-spacing: 0px;
-color: #FFFFFF;
+  letter-spacing: 0px;
+  color: #ffffff;
   width: 209px;
   border: 0px;
-  margin:0 auto;
+  margin: 0 auto;
 }
-
 </style>
