@@ -1,7 +1,11 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img src="../../assets/icons/cancel.png" class="cancel" @click="emitVisibility"/>
+      <img
+        src="../../assets/icons/cancel.png"
+        class="cancel"
+        @click="emitVisibility"
+      />
       <h3>Delete User</h3>
 
       <div class="form-wrapper">
@@ -11,13 +15,11 @@
           </div>
           <div class="userInfo">
             <button class="dropbtn">
-                <span>
-                Samantha Stenford
-                </span>
-                </button>
+              <span> Samantha Stenford </span>
+            </button>
           </div>
-             <div class="activeUser">
-              <span>Active User</span>
+          <div class="activeUser">
+            <span>Active User</span>
           </div>
         </div>
 
@@ -32,19 +34,17 @@
 <script>
 export default {
   name: "DeleteUser",
-  props: {
-  
-  },
-  methods:{
-    emitVisibility(){
+  props: {},
+  methods: {
+    emitVisibility() {
       console.log("toggle deletion false");
-      this.$emit('toggleDeletion', false);
-    }
-  }
+      this.$emit("toggleDeletion", false);
+    },
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .invitation {
   position: absolute !important;
@@ -108,8 +108,8 @@ h3 {
   width: 100%;
   height: 100%;
   text-align: left;
-  display:flex;
-  align-items:flex-start;
+  display: flex;
+  align-items: flex-start;
   border: 0px;
   color: #707070;
   font-family: "Segoe UI";
@@ -119,7 +119,7 @@ h3 {
 .userInfo {
   position: relative;
   display: inline-block;
-  width:63%;
+  width: 63%;
   height: 50px;
 }
 
@@ -134,10 +134,8 @@ h3 {
 .icon img {
   width: 18px;
   margin-top: 2px;
-  margin-right:20px;
+  margin-right: 20px;
 }
-
-
 
 .invisible {
   width: 45%;
@@ -158,7 +156,7 @@ h3 {
   width: 35%;
   border: 0px;
   background-color: #f79696;
-  color:white;
+  color: white;
 }
 
 .final-section {
@@ -168,16 +166,17 @@ h3 {
   display: flex;
   justify-content: space-between;
 }
-.userInfo, .activeUser{
-      border-bottom: 2px solid #ccc9c9 !important;
+.userInfo,
+.activeUser {
+  border-bottom: 2px solid #ccc9c9 !important;
 }
-.activeUser{
-font-size: 16px;
-border: 0px;
+.activeUser {
+  font-size: 16px;
+  border: 0px;
   color: #707070;
   font-family: "Segoe UI";
   font-weight: bold;
-  width:30%;
-  color:#4fa6d6;
+  width: 30%;
+  color: #4fa6d6;
 }
 </style>

@@ -25,16 +25,19 @@
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_1_visibility">
-        <div class="flex-box" v-for="(value,name) in user.per_group_1" :key="value">
+        <div
+          class="flex-box"
+          v-for="(value, name) in user.per_group_1"
+          :key="value"
+        >
           <div class="flex-wrapper">
             <div class="circle"></div>
-            <p>{{name}}</p>
+            <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton :toggleChecked="value == 'true' ? true : false"/>
+            <ToggleButton :toggleChecked="value == 'true' ? true : false" />
           </div>
         </div>
-
       </div>
     </div>
 
@@ -46,23 +49,27 @@
           <button class="dropbtn" v-on:click="togglePermissionTwo">
             Permission Group 2
           </button>
-         
         </div>
         <div class="toggleBtn">
-          <ToggleButton :toggleChecked="permission_group_2===true ? true : false"/>
+          <ToggleButton
+            :toggleChecked="permission_group_2 === true ? true : false"
+          />
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_2_visibility">
-        <div class="flex-box" v-for="(value,name) in user.per_group_2" :key="value">
+        <div
+          class="flex-box"
+          v-for="(value, name) in user.per_group_2"
+          :key="value"
+        >
           <div class="flex-wrapper">
             <div class="circle"></div>
-            <p>{{name}}</p>
+            <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-           <ToggleButton :toggleChecked="value == 'true' ? true : false"/>
+            <ToggleButton :toggleChecked="value == 'true' ? true : false" />
           </div>
         </div>
-
       </div>
     </div>
     <hr />
@@ -73,23 +80,25 @@
           <button class="dropbtn" v-on:click="togglePermissionThree">
             Permission Group 3
           </button>
-          
         </div>
         <div class="toggleBtn">
-          <ToggleButton :toggleChecked="permission_group_3 ? true : false"/>
+          <ToggleButton :toggleChecked="permission_group_3 ? true : false" />
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_3_visibility">
-        <div class="flex-box" v-for="(value,name) in user.per_group_3" :key="value">
+        <div
+          class="flex-box"
+          v-for="(value, name) in user.per_group_3"
+          :key="value"
+        >
           <div class="flex-wrapper">
             <div class="circle"></div>
-            <p>{{name}}</p>
+            <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton :toggleChecked="value == 'true' ? true : false"/>
+            <ToggleButton :toggleChecked="value == 'true' ? true : false" />
           </div>
         </div>
-
       </div>
     </div>
     <hr />
@@ -112,7 +121,7 @@ export default {
       permission_1_visibility: false,
       permission_2_visibility: false,
       permission_3_visibility: false,
-      permission_group_1:false,
+      permission_group_1: false,
       permission_group_2: false,
       permission_group_3: false,
     };
@@ -130,35 +139,31 @@ export default {
   },
   created() {
     console.log(this.user.per_group_3);
-      for (const item in this.user.per_group_1) {
-        console.log(item);
-        if (this.user.per_group_1.item ==="true") {
-          this.permission_group_1=true;
-        }
-      
-    };
-     
-      for (const item in this.user.per_group_2) {
-        console.log(item);
-        if (this.user.per_group_2[item] === "true") {
-          this.permission_group_2=true;
-        }
-      
-      
-    };
-    
-      for (const item in this.user.per_group_3) {
-        console.log(item);
-        if (this.user.per_group_3[item] === "true") {
-          this.permission_group_3=true;
-        }
+    for (const item in this.user.per_group_1) {
+      console.log(item);
+      if (this.user.per_group_1.item === "true") {
+        this.permission_group_1 = true;
       }
-    
-  }
+    }
+
+    for (const item in this.user.per_group_2) {
+      console.log(item);
+      if (this.user.per_group_2[item] === "true") {
+        this.permission_group_2 = true;
+      }
+    }
+
+    for (const item in this.user.per_group_3) {
+      console.log(item);
+      if (this.user.per_group_3[item] === "true") {
+        this.permission_group_3 = true;
+      }
+    }
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .wrapper {
   width: 100%;

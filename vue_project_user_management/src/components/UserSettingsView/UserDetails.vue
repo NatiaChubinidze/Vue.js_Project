@@ -3,14 +3,24 @@
     <h3>Details</h3>
     <div class="flex-box">
       <div class="toggleButton">
-        <ToggleButton :toggleChecked="user.status === 'active' ? true : false"/>
+        <ToggleButton
+          :toggleChecked="user.status === 'active' ? true : false"
+        />
       </div>
-      <p>The user is <span>{{user.status === 'active' ? 'Active' : 'Inactive'}}</span></p>
+      <p>
+        The user is
+        <span>{{ user.status === "active" ? "Active" : "Inactive" }}</span>
+      </p>
     </div>
     <form>
       <div class="line">
         <label for="firstName">*First Name</label>
-        <input type="text" class="firstName" id="firstName" v-model="firstName"/>
+        <input
+          type="text"
+          class="firstName"
+          id="firstName"
+          v-model="firstName"
+        />
       </div>
       <div class="line">
         <label for="lastName">*Last Name</label>
@@ -19,7 +29,7 @@
       <div class="line">
         <label for="role">*Role</label>
         <div class="dropdown" id="role">
-          <button class="dropbtn">{{role}}</button>
+          <button class="dropbtn">{{ role }}</button>
           <img src="../../assets/icons/down-arrow.png" class="arrow" />
           <div class="dropdown-content">
             <a href="#">Admin</a>
@@ -43,17 +53,17 @@ export default {
   components: {
     ToggleButton,
   },
-  data(){
+  data() {
     return {
-      firstName:this.user.name.split(' ')[0],
-  lastName:this.user.name.split(' ')[1],
-  role:this.user.role
-    }
-  }
+      firstName: this.user.name.split(" ")[0],
+      lastName: this.user.name.split(" ")[1],
+      role: this.user.role,
+    };
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .wrapper {
   width: 100%;
@@ -67,14 +77,14 @@ h3 {
   font: normal normal 600 36px/48px Segoe UI;
   letter-spacing: 0px;
   color: #000000;
-  margin-bottom:40px;
+  margin-bottom: 40px;
 }
 .flex-box {
   width: 210px;
   display: flex;
   justify-content: space-between;
   align-self: flex-start;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 .flex-box p {
   font-size: 16px;
@@ -194,7 +204,7 @@ input::placeholder {
   letter-spacing: 0px;
   color: #33a3dc;
   margin-bottom: 10px;
-  margin-top:10px;
+  margin-top: 10px;
 }
 .save {
   height: 59px;

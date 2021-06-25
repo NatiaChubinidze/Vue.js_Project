@@ -88,14 +88,14 @@ export default {
     };
   },
   watch: {
-    filterTerm: function() {
+    filterTerm: function () {
       console.log("table component filterterm", this.filterTerm);
       if (this.filterTerm) {
         console.log("if statement");
         let clonedArray = [...this.usersArray];
         const searchTerm = this.filterTerm.toLowerCase();
-        
-        let filteredArray=clonedArray.filter((user) => {
+
+        let filteredArray = clonedArray.filter((user) => {
           return (
             user.name.toLowerCase().includes(searchTerm) ||
             user.email.toLowerCase().includes(searchTerm) ||
@@ -103,7 +103,7 @@ export default {
             user.status.toLowerCase().includes(searchTerm)
           );
         });
-        console.log("clonedArray",clonedArray);
+        console.log("clonedArray", clonedArray);
         this.users = [...filteredArray];
         console.log("this users", this.users);
       } else {
@@ -111,17 +111,21 @@ export default {
         this.users = [...this.usersArray];
       }
     },
+    usersArray: function() {
+      console.log("users changed table compoennt");
+      this.users=[...this.usersArray];
+    },
   },
 
   methods: {
     navigate(user) {
-      this.$emit('activeUser',user);
-      this.$router.push(
-        {name:'Settings',
-        params:{
-          userId:user.id
-        }}
-      );
+      this.$emit("activeUser", user);
+      this.$router.push({
+        name: "Settings",
+        params: {
+          userId: user.id,
+        },
+      });
     },
     toggleDeletionOption() {
       this.$emit("toggleDelete", true);
@@ -157,7 +161,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .wrapper {
   width: 100%;
@@ -200,13 +204,7 @@ table p {
   flex-direction: column;
   align-content: flex-start;
 }
-/* .table-cell{
-    width:100%;
-    height:100%;
-    display:flex;
-    flex-wrap: wrap;
-    align-items: center;
-} */
+
 .thumbnail {
   border: 0px;
   text-align: left;

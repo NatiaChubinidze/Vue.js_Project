@@ -99,7 +99,7 @@ export let USERS = [
     "id": 5,
     "name": "Persieval Blinn",
     "email": "PersoevalBlinn@test.com",
-    "role": "user",
+    "role": "admin",
     "status": "disabled",
     "per_group_1": {
       "permission_11": "true",

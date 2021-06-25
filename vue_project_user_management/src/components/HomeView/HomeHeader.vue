@@ -24,24 +24,23 @@ export default {
   props: {},
   data() {
     return {
-      searchTerm: '',
+      searchTerm: "",
     };
   },
   methods: {
     emitAddUsers() {
       this.$emit("toggleAddUser", true);
     },
-   
   },
-  renderTriggered(){
-      console.log("update",this.searchTerm);
-        console.log("emitting the value",this.searchTerm);
-      this.$emit("newTerm", this.searchTerm);
-  }
+  renderTriggered() {
+    console.log("update", this.searchTerm);
+    console.log("emitting the value", this.searchTerm);
+    this.$emit("newTerm", this.searchTerm);
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .box {
   height: 150px;

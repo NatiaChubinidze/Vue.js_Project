@@ -1,7 +1,11 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img src="../../assets/icons/cancel.png" class="cancel" @click="toggleVisibility" />
+      <img
+        src="../../assets/icons/cancel.png"
+        class="cancel"
+        @click="toggleVisibility"
+      />
       <h3>Invite New User</h3>
       <form>
         <div class="form-wrapper">
@@ -9,23 +13,38 @@
             <div class="icon">
               <img src="../../assets/icons/boy.png" class="img" />
             </div>
-            <input type="text" class="firstName" placeholder="* First Name" />
-            <input type="text" class="lastName" placeholder="* Last Name" />
+            <input
+              type="text"
+              class="firstName"
+              placeholder="* First Name"
+              v-model="invitedUser.firstName"
+            />
+            <input
+              type="text"
+              class="lastName"
+              placeholder="* Last Name"
+              v-model="invitedUser.lastName"
+            />
           </div>
           <div class="line">
             <div class="icon">
               <img src="../../assets/icons/arroba.png" class="img" />
             </div>
-            <input type="email" class="email" placeholder="* Email" />
+            <input
+              type="email"
+              class="email"
+              placeholder="* Email"
+              v-model="invitedUser.email"
+            />
           </div>
           <div class="line">
             <div class="icon">
               <img src="../../assets/icons/role_key.png" />
             </div>
             <div class="dropdown">
-              <button class="dropbtn">* Role</button>
+              <button class="dropbtn" id="dropbtn" disabled>* Role</button>
               <img src="../../assets/icons/down-arrow.png" class="arrow" />
-              <div class="dropdown-content">
+              <div class="dropdown-content" @click="setRole($event)">
                 <a href="#">Admin</a>
                 <a href="#">User</a>
               </div>
@@ -34,10 +53,9 @@
           </div>
 
           <div class="final-section">
-            <!-- <div class="icon">
-                <img />
-                </div> -->
-            <button class="submit-btn">Send Invitation</button>
+            <button class="submit-btn" @click="submitInvitation">
+              Send Invitation
+            </button>
             <div class="info-div">Fill in all the fields</div>
           </div>
         </div>
@@ -49,18 +67,63 @@
 <script>
 export default {
   name: "InvitationBox",
-  props: {
-   
+  props: {},
+  methods: {
+    toggleVisibility() {
+      this.$emit("visibilityChange", false);
+    },
+    submitInvitation(event) {
+      event.preventDefault();
+      let userToAdd = {
+        name: `${this.invitedUser.firstName} ${this.invitedUser.lastName}`,
+        email: this.invitedUser.email,
+        role: this.invitedUser.role,
+        id: Math.round(Math.random() * 1000),
+        status: "active",
+        per_group_1: {
+          permission_11: "true",
+          permission_12: "true",
+          permission_13: "true",
+          permission_14: "false",
+          permission_15: "false",
+        },
+        per_group_2: {
+          permission_16: "true",
+          permission_17: "true",
+          permission_18: "true",
+        },
+        per_group_3: {
+          permission_19: "true",
+          permission_20: "true",
+          permission_21: "true",
+        },
+      };
+
+      console.log(userToAdd);
+      this.$emit("inviteUser", userToAdd);
+      this.toggleVisibility();
+    },
+    setRole(event) {
+      if (event.target.tagName == "A") {
+        document.getElementById("dropbtn").innerText = event.target.innerText;
+        this.invitedUser.role = event.target.innerText.toLowerCase();
+        console.log(this.invitedUser.role);
+      }
+    },
   },
-  methods:{
-    toggleVisibility(){
-      this.$emit('visibilityChange', false);
-    }
-  }
+  data() {
+    return {
+      invitedUser: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        role: "",
+      },
+    };
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .invitation {
   position: absolute !important;

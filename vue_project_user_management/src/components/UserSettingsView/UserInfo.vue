@@ -7,8 +7,8 @@
       </div>
     </div>
     <span>Upload a Photo</span>
-    <p class="name">{{user.name}}</p>
-    <p class="email">{{user.email}}</p>
+    <p class="name">{{ user.name }}</p>
+    <p class="email">{{ user.email }}</p>
     <button class="submit-btn">Resend the invite</button>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .wrapper {
   width: 100%;
@@ -61,7 +61,7 @@ export default {
 .wrapper span {
   text-transform: uppercase;
   margin-top: 20px;
-  margin-bottom:40px;
+  margin-bottom: 40px;
   font: normal normal 300 14px/19px Segoe UI;
   letter-spacing: 0px;
   color: #b0acac;
@@ -77,8 +77,8 @@ export default {
   font: normal normal 300 16px/21px Segoe UI;
   letter-spacing: 0px;
   color: #000000;
-  margin-top:5px;
-  margin-bottom:47px;
+  margin-top: 5px;
+  margin-bottom: 47px;
 }
 .submit-btn {
   height: 59px;
