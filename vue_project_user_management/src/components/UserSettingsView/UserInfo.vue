@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-if="user">
     <div class="box">
       <img src="../../assets/icons/profile-pic.png" class="profile-pic" />
       <div class="admin-div">
@@ -7,8 +7,8 @@
       </div>
     </div>
     <span>Upload a Photo</span>
-    <p class="name">Danniel Blichman</p>
-    <p class="email">danniel.blichman@testtask.com</p>
+    <p class="name">{{user.name}}</p>
+    <p class="email">{{user.email}}</p>
     <button class="submit-btn">Resend the invite</button>
   </div>
 </template>
@@ -17,7 +17,7 @@
 export default {
   name: "UserInfo",
   props: {
-    msg: String,
+    user: Object,
   },
 };
 </script>

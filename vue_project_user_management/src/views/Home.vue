@@ -2,7 +2,7 @@
     <div v-bind:class="showDeletionWindow || showAddUsers ? 'home background-grey' : 'home'">
     <div v-bind:class="showDeletionWindow || showAddUsers ? 'wrapper toBack' : 'wrapper'">
     <HomeHeader @toggleAddUser="changeAddUserOption($event)" @newTerm="setFilterTerm($event)"/>
-    <UsersTable :usersArray="users" :filterTerm="filterTerm" @toggleDelete="changeDeletionPopUp($event)"/>
+    <UsersTable :usersArray="users" :filterTerm="filterTerm" @activeUser="setActiveUser($event)" @toggleDelete="changeDeletionPopUp($event)"/>
     <Pagination msg="Welcome to Your Vue.js App"/>
   </div>
   <InvitationBox @visibilityChange="changeAddUserOption($event)" v-bind:class="showAddUsers ? 'pop-up' : 'd-none'"/>
@@ -34,6 +34,7 @@ export default {
       showDeletionWindow:false,
       showAddUsers:false,
       filterTerm:'',
+      activeUser:{}
     }
   },
   methods:{
@@ -45,11 +46,13 @@ export default {
     },
     setFilterTerm(event){
       this.filterTerm=event;
+    },
+    setActiveUser(event){
+      this.activeUser={...event};
+      console.log("active user is set");
     }
   },
-  created(){
-  console.log(USERS);
-}
+ 
 }
 </script>
 

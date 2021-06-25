@@ -3,13 +3,13 @@
     <SettingsHeader/>
     <div class="flex-wrapper">
       <div class="userInfo">
-         <UserInfo/>
+         <UserInfo :user="activeUser"/>
       </div>
        <div class="userDetails">
-          <UserDetails/>
+          <UserDetails :user="activeUser"/>
        </div>
         <div class="userPermissions">
-               <UserPermission/>
+               <UserPermission :user="activeUser"/>
         </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
  import UserInfo from '@/components/UserSettingsView/UserInfo.vue'
  import UserDetails from '@/components/UserSettingsView/UserDetails.vue'
  import UserPermission from '@/components/UserSettingsView/UserPermission.vue'
-
+import {USERS} from '../shared/data';
 
 export default {
   name: 'Settings',
@@ -30,7 +30,19 @@ export default {
     UserInfo,
     UserDetails,
     UserPermission
-  }
+  },
+  props:{
+    userId:String
+  },
+ data(){
+   return {
+      users:[...USERS],
+     activeUser:{},
+   }
+ },
+ created(){
+   this.activeUser=this.users.filter(user=>user.id==this.userId)[0];
+ }
 }
 </script>
 

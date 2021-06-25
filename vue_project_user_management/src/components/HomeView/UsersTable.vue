@@ -50,7 +50,7 @@
                 <img
                   class="settings-img"
                   src="../../assets/icons/settings.png"
-                  v-on:click="navigate"
+                  v-on:click="navigate(user)"
                 />
                 <img
                   class="recycleBin-img"
@@ -113,12 +113,15 @@ export default {
     },
   },
 
-  renderTriggered() {
-    console.log("RENDER TRIGGERED IN TABLE");
-  },
   methods: {
-    navigate() {
-      this.$router.push("/settings");
+    navigate(user) {
+      this.$emit('activeUser',user);
+      this.$router.push(
+        {name:'Settings',
+        params:{
+          userId:user.id
+        }}
+      );
     },
     toggleDeletionOption() {
       this.$emit("toggleDelete", true);

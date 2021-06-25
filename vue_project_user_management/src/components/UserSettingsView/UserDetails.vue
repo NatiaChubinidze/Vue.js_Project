@@ -3,23 +3,23 @@
     <h3>Details</h3>
     <div class="flex-box">
       <div class="toggleButton">
-        <ToggleButton />
+        <ToggleButton :toggleChecked="user.status === 'active' ? true : false"/>
       </div>
-      <p>The user is <span>Active</span></p>
+      <p>The user is <span>{{user.status === 'active' ? 'Active' : 'Inactive'}}</span></p>
     </div>
     <form>
       <div class="line">
         <label for="firstName">*First Name</label>
-        <input type="text" class="firstName" id="firstName" />
+        <input type="text" class="firstName" id="firstName" v-model="firstName"/>
       </div>
       <div class="line">
         <label for="lastName">*Last Name</label>
-        <input type="text" class="lastName" id="lastname" />
+        <input type="text" class="lastName" id="lastname" v-model="lastName" />
       </div>
       <div class="line">
         <label for="role">*Role</label>
         <div class="dropdown" id="role">
-          <button class="dropbtn"></button>
+          <button class="dropbtn">{{role}}</button>
           <img src="../../assets/icons/down-arrow.png" class="arrow" />
           <div class="dropdown-content">
             <a href="#">Admin</a>
@@ -38,11 +38,18 @@ import ToggleButton from "@/components/ToggleButton.vue";
 export default {
   name: "UserDetails",
   props: {
-    msg: String,
+    user: Object,
   },
   components: {
     ToggleButton,
   },
+  data(){
+    return {
+      firstName:this.user.name.split(' ')[0],
+  lastName:this.user.name.split(' ')[1],
+  role:this.user.role
+    }
+  }
 };
 </script>
 
