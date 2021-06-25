@@ -4,9 +4,15 @@
       <thead>
         <tr class="table-header">
           <th scope="col" class="th-thumbnail"></th>
-          <th scope="col" class="th-user"><span  @click="sortByUser">User</span></th>
-          <th scope="col" class="th-role"><span @click="sortByRole">Role</span></th>
-          <th scope="col" class="th-status"><span @click="sortByStatus">Status</span></th>
+          <th scope="col" class="th-user">
+            <span @click="sortByUser">User</span>
+          </th>
+          <th scope="col" class="th-role">
+            <span @click="sortByRole">Role</span>
+          </th>
+          <th scope="col" class="th-status">
+            <span @click="sortByStatus">Status</span>
+          </th>
           <th scope="col" class="th-actions">Actions</th>
         </tr>
       </thead>
@@ -66,20 +72,50 @@ import ToggleButton from "../ToggleButton.vue";
 export default {
   name: "UsersTable",
   props: {
-    users: Array,
+    usersArray: Array,
     toggleDelete: Boolean,
+    filterTerm: String,
   },
   components: {
     ToggleButton,
   },
   data() {
     return {
-        sortByUserDesc:true,
-        sortByRoleDesc:true,
-        sortByStatusDesc:true,
+      sortByUserDesc: true,
+      sortByRoleDesc: true,
+      sortByStatusDesc: true,
+      users: [...this.usersArray],
     };
   },
- 
+  watch: {
+    filterTerm: function() {
+      console.log("table component filterterm", this.filterTerm);
+      if (this.filterTerm) {
+        console.log("if statement");
+        let clonedArray = [...this.usersArray];
+        const searchTerm = this.filterTerm.toLowerCase();
+        
+        let filteredArray=clonedArray.filter((user) => {
+          return (
+            user.name.toLowerCase().includes(searchTerm) ||
+            user.email.toLowerCase().includes(searchTerm) ||
+            user.role.toLowerCase().includes(searchTerm) ||
+            user.status.toLowerCase().includes(searchTerm)
+          );
+        });
+        console.log("clonedArray",clonedArray);
+        this.users = [...filteredArray];
+        console.log("this users", this.users);
+      } else {
+        console.log("else statement");
+        this.users = [...this.usersArray];
+      }
+    },
+  },
+
+  renderTriggered() {
+    console.log("RENDER TRIGGERED IN TABLE");
+  },
   methods: {
     navigate() {
       this.$router.push("/settings");
@@ -88,25 +124,31 @@ export default {
       this.$emit("toggleDelete", true);
     },
     sortByUser() {
-        this.users.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        if(!this.sortByUserDesc){
-            this.users.reverse();
-        }
-        this.sortByUserDesc=!this.sortByUserDesc;
+      this.users.sort((a, b) =>
+        a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+      );
+      if (!this.sortByUserDesc) {
+        this.users.reverse();
+      }
+      this.sortByUserDesc = !this.sortByUserDesc;
     },
     sortByRole() {
-        this.users.sort((a,b) => (a.role > b.role) ? 1 : ((b.role > a.role) ? -1 : 0));
-        if(!this.sortByRoleDesc){
-            this.users.reverse();
-        }
-        this.sortByRoleDesc=!this.sortByRoleDesc;
+      this.users.sort((a, b) =>
+        a.role > b.role ? 1 : b.role > a.role ? -1 : 0
+      );
+      if (!this.sortByRoleDesc) {
+        this.users.reverse();
+      }
+      this.sortByRoleDesc = !this.sortByRoleDesc;
     },
     sortByStatus() {
-        this.users.sort((a,b) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
-        if(!this.sortByStatusDesc){
-            this.users.reverse();
-        }
-        this.sortByStatusDesc=!this.sortByStatusDesc;
+      this.users.sort((a, b) =>
+        a.status > b.status ? 1 : b.status > a.status ? -1 : 0
+      );
+      if (!this.sortByStatusDesc) {
+        this.users.reverse();
+      }
+      this.sortByStatusDesc = !this.sortByStatusDesc;
     },
   },
 };
@@ -125,8 +167,8 @@ table th {
   padding-bottom: 30px;
   border: 0px;
 }
-table th span{
-    cursor:pointer;
+table th span {
+  cursor: pointer;
 }
 table th:not(:first-child) {
   border-bottom: 2px solid #00000029 !important;

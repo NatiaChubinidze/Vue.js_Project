@@ -26,7 +26,7 @@ export const USERS = [
     name: "Margarett Jones",
     email: "MargaretJonesn@test.com",
     role: "user",
-    status: "inactive",
+    status: "disabled",
     per_group_1: {
       permission_11: "true",
       permission_12: "false",
@@ -95,7 +95,7 @@ export const USERS = [
     name: "Persieval Blinn",
     email: "PersoevalBlinn@test.com",
     role: "user",
-    status: "inactive",
+    status: "disabled",
     per_group_1: {
       permission_11: "true",
       permission_12: "false",
