@@ -9,7 +9,7 @@
     </div>
 </div>
 </div>
-<div class="plus">+</div>
+<div class="plus" @click="emitAddUsers">+</div>
 </div>
 </template>
 
@@ -17,7 +17,16 @@
 export default {
   name: 'HomeHeader',
   props: {
-    msg: String
+  },
+  data(){
+      return{
+
+      }
+  },
+  methods:{
+     emitAddUsers(){
+         this.$emit('toggleAddUser',true);
+     }
   }
 }
 </script>

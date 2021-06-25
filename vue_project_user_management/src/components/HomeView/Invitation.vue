@@ -1,7 +1,7 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img src="../../assets/icons/cancel.png" class="cancel" />
+      <img src="../../assets/icons/cancel.png" class="cancel" @click="toggleVisibility" />
       <h3>Invite New User</h3>
       <form>
         <div class="form-wrapper">
@@ -50,8 +50,13 @@
 export default {
   name: "InvitationBox",
   props: {
-    msg: String,
+   
   },
+  methods:{
+    toggleVisibility(){
+      this.$emit('visibilityChange', false);
+    }
+  }
 };
 </script>
 

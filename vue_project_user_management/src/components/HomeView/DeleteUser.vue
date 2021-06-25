@@ -1,7 +1,7 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img src="../../assets/icons/cancel.png" class="cancel" />
+      <img src="../../assets/icons/cancel.png" class="cancel" @click="emitVisibility"/>
       <h3>Delete User</h3>
 
       <div class="form-wrapper">
@@ -33,8 +33,14 @@
 export default {
   name: "DeleteUser",
   props: {
-    msg: String,
+  
   },
+  methods:{
+    emitVisibility(){
+      console.log("toggle deletion false");
+      this.$emit('toggleDeletion', false);
+    }
+  }
 };
 </script>
 

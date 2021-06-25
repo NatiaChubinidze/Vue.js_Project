@@ -1,12 +1,14 @@
 <template>
-  <div class="home background-grey">
-    <div class="wrapper toBack">
-    <HomeHeader msg="Welcome to Your Vue.js App"/>
-    <UsersTable msg="Welcome to Your Vue.js App"/>
+  <!-- <div class="home background-grey"> -->
+    <!-- <div class="wrapper toBack"> -->
+    <div v-bind:class="showDeletionWindow || showAddUsers ? 'home background-grey' : 'home'">
+    <div v-bind:class="showDeletionWindow || showAddUsers ? 'wrapper toBack' : 'wrapper'">
+    <HomeHeader  @toggleAddUser="changeAddUserOption($event)"/>
+    <UsersTable :users="users" @toggleDelete="changeDeletionPopUp($event)"/>
     <Pagination msg="Welcome to Your Vue.js App"/>
   </div>
-  <!-- <InvitationBox class="pop-up"/> -->
-  <DeleteUser class="pop-up"/>
+  <InvitationBox @visibilityChange="changeAddUserOption($event)" v-bind:class="showAddUsers ? 'pop-up' : 'd-none'"/>
+  <DeleteUser @toggleDeletion="changeDeletionPopUp($event)" v-bind:class="showDeletionWindow ? 'pop-up' : 'd-none'"/>
   </div>
 </template>
 
@@ -17,7 +19,7 @@ import UsersTable from '@/components/HomeView/UsersTable.vue'
 import Pagination from '@/components/HomeView/Pagination.vue'
 import InvitationBox from '@/components/HomeView/Invitation.vue'
 import DeleteUser from '@/components/HomeView/DeleteUser.vue'
-
+import {USERS} from '../shared/data';
 
 export default {
   name: 'Home',
@@ -27,7 +29,25 @@ export default {
     Pagination,
     InvitationBox,
     DeleteUser,
-  }
+  },
+  data(){
+    return{
+      users:[...USERS],
+      showDeletionWindow:false,
+      showAddUsers:false,
+    }
+  },
+  methods:{
+    changeDeletionPopUp(event){
+      this.showDeletionWindow=event;
+    },
+    changeAddUserOption(event){
+      this.showAddUsers=event;
+    }
+  },
+  created(){
+  console.log(USERS);
+}
 }
 </script>
 

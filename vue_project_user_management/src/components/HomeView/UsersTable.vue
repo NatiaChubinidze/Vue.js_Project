@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper">
-<table class="table">
+<table class="table" v-if="users">
   <thead>
     <tr class="table-header">
       <th scope="col" class="th-thumbnail"></th>
@@ -11,31 +11,31 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr v-for="user in users" :key="user.email">
       <td class="thumbnail">
          <img src="../../assets/icons/user.png"/>
       </td>
-      <td><div class="user-info"><span>Mark</span><p>Mark@test.com</p></div></td>
+      <td><div class="user-info"><span>{{user.name}}</span><p>{{user.email}}</p></div></td>
       <td>
           <div class="td-role">
-          <div class="admin-div">
+          <div class="admin-div" v-if="user.role==='admin'">
               <img src="../../assets/icons/key.png"/>
           </div>
-          <p>Admin</p>
+          <p>{{user.role}}</p>
           </div>
           </td>
       <td class="td-status">
           <div class="toggle-wrapper">
               <div class="toggle-btn">
-              <ToggleButton/>
+              <ToggleButton :toggleChecked="user.status === 'active' ? true : false "/>
               </div>
               </div>
               </td>
       <td class="td-actions">
           <div class="cont-wrapper">
           <div class="actions">
-              <img class ="settings-img" src="../../assets/icons/settings.png"/>
-              <img class="recycleBin-img" src="../../assets/icons/recycle.png"/>
+              <img class ="settings-img" src="../../assets/icons/settings.png" v-on:click="navigate"/>
+              <img class="recycleBin-img" src="../../assets/icons/recycle.png" v-on:click="toggleDeletionOption"/>
           </div>
           </div>
       </td>
@@ -53,11 +53,26 @@ import ToggleButton from '../ToggleButton.vue'
 export default {
   name: 'UsersTable',
   props: {
-    msg: String
+   users: Array,
+   toggleDelete:Boolean
   },
   components:{
       ToggleButton,
-  }
+  },
+ data(){
+     return{
+        
+     }
+ },
+ methods:{
+     navigate(){
+         this.$router.push("/settings");
+     },
+     toggleDeletionOption(){
+         this.$emit('toggleDelete',true);
+     },
+    
+ }
 }
 </script>
 
@@ -123,7 +138,7 @@ table p{
     text-align:left;
 }
 .th-role{
-    width:130px;
+    width:190px;
 }
 .th-actions{
     width:100px;
@@ -133,7 +148,7 @@ table p{
     width:100%;
     height:100%;
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .td-role p{
@@ -148,6 +163,7 @@ margin-top:5px;
     flex-wrap:wrap;
     justify-content: center;
     align-items: center;
+    margin-right:20px;
 }
 .admin-div img{
     width:24px;

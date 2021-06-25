@@ -1,7 +1,7 @@
 <template>
 <div class="cont">
     <label class="switch">
-        <input type="checkbox">
+        <input type="checkbox" v-bind:checked="toggleChecked">
         <span class="slider"></span>
     </label>
 </div>
@@ -11,8 +11,9 @@
 export default {
   name: 'ToggleButton',
   props: {
-    msg: String
-  }
+    toggleChecked: Boolean
+  },
+  
 }
 </script>
 
@@ -36,7 +37,8 @@ export default {
     left:0;
     right:0;
     bottom:0;
-    background-color: #b1d4e7;
+   
+       background-color:#f89797;
     transition:.4s;
     border-radius:34px;
 }
@@ -48,16 +50,17 @@ export default {
     width:24px;
     left:-5px;
     top:-4.5px;
-    background-color: #44a0d3;
+  
+    background-color: red;
     transition: 0.4s;
     border-radius: 50px;
 }
 input:checked + .slider{
-    background-color:#f89797;
+ background-color: #b1d4e7;
 }
 input:checked + .slider:before{
     transform: translateX(30px);
-    background-color: red;
+      background-color: #44a0d3;
 }
 
 
