@@ -8,34 +8,176 @@
       </div>
     </div>
     <hr />
-    <div class="permission_group">
-      <img class="img" src="../../assets/icons/permission_arrow.png" />
-      <div class="line">
-        <div class="dropdown" id="role">
-          <button class="dropbtn">Permission Group 1</button>
 
-          <div class="dropdown-content">
-            <div class="flex-box">
-              <div class="circle"></div>
-              <p>Permission 1</p>
-              <div class="toggleBtn">
-                <ToggleButton />
-              </div>
-            </div>
-            <div class="flex-box"><p>Permission 2</p></div>
-            <div class="flex-box"><p>Permission 3</p></div>
-            <div class="flex-box"><p>Permission 4</p></div>
+    <div class="permission_group">
+      <div class="title-line">
+        <img class="img" src="../../assets/icons/permission_arrow.png" />
+        <div class="permission-title">
+          <button class="dropbtn" v-on:click="togglePermissionOne">
+            Permission Group 1
+          </button>
+        </div>
+        <div class="toggleBtn">
+          <ToggleButton />
+        </div>
+      </div>
+      <div class="dropdown-content" v-if="permission_1">
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 1</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 2</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 3</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 4</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
           </div>
         </div>
       </div>
-      <div class="toggleBtn">
-        <ToggleButton />
+    </div>
+
+    <hr />
+    <div class="permission_group">
+      <div class="title-line">
+        <img class="img" src="../../assets/icons/permission_arrow.png" />
+        <div class="permission-title">
+          <button class="dropbtn" v-on:click="togglePermissionTwo">
+            Permission Group 2
+          </button>
+          <!-- <div class="dropdown" id="role" v-if="permissions_1"> -->
+          <!-- </div> -->
+        </div>
+        <div class="toggleBtn">
+          <ToggleButton />
+        </div>
+      </div>
+      <div class="dropdown-content" v-if="permission_2">
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 1</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 2</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 3</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 4</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
       </div>
     </div>
     <hr />
-    <div class="permission_group"></div>
-    <hr />
-    <div class="permission_group"></div>
+    <div class="permission_group">
+      <div class="title-line">
+        <img class="img" src="../../assets/icons/permission_arrow.png" />
+        <div class="permission-title">
+          <button class="dropbtn" v-on:click="togglePermissionThree">
+            Permission Group 3
+          </button>
+          <!-- <div class="dropdown" id="role" v-if="permissions_1"> -->
+          <!-- </div> -->
+        </div>
+        <div class="toggleBtn">
+          <ToggleButton />
+        </div>
+      </div>
+      <div class="dropdown-content" v-if="permission_3">
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 1</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 2</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 3</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+
+        <div class="flex-box">
+          <div class="flex-wrapper">
+            <div class="circle"></div>
+            <p>Permission 4</p>
+          </div>
+          <div class="toggleBtn">
+            <ToggleButton />
+          </div>
+        </div>
+      </div>
+    </div>
     <hr />
   </div>
 </template>
@@ -51,6 +193,26 @@ export default {
   components: {
     ToggleButton,
   },
+  data() {
+    return {
+      permission_1: false,
+      permission_2: false,
+      permission_3: false,
+    };
+  },
+  methods: {
+    togglePermissionOne() {
+      console.log("click", this.permission_1);
+      this.permission_1 = !this.permission_1;
+      console.log("after", this.permission_1);
+    },
+    togglePermissionTwo() {
+      this.permission_2 = !this.permission_2;
+    },
+    togglePermissionThree() {
+      this.permission_3 = !this.permission_3;
+    },
+  },
 };
 </script>
 
@@ -64,13 +226,14 @@ export default {
   flex-wrap: wrap;
   padding: 40px 10px;
   border: 1px solid rgb(23, 228, 132);
-  align-items: center;
+  align-items: flex-start;
 }
 h3 {
   font: normal normal 600 36px/48px Segoe UI;
   letter-spacing: 0px;
   color: #000000;
   margin-bottom: 40px;
+  margin-left: 20px;
 }
 p {
   width: fit-content;
@@ -80,6 +243,8 @@ p {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding-left: 24px;
+  padding-right: 15px;
 }
 .toggleBtn {
   width: 80px;
@@ -95,14 +260,22 @@ hr {
 }
 .permission_group {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: space-between;
   width: 100%;
-  align-items: center;
+  font: normal normal 600 16px/21px Segoe UI;
+  letter-spacing: 0px;
+  color: #000000;
 }
-.line {
+.permission-title {
   width: 80%;
   height: fit-content;
   margin-bottom: 20px;
+}
+.permission-disabled {
+  font: normal normal 300 16px/21px Segoe UI;
+  letter-spacing: 0px;
+  color: #000000;
 }
 .dropbtn {
   background-color: #f3f3f3;
@@ -113,51 +286,47 @@ hr {
   width: 100% !important;
   height: 100%;
   text-align: left;
+  font: normal normal bold 16px/21px Segoe UI;
+  letter-spacing: 0px;
+  color: #000000;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 35px;
-  background-color: #f3f3f3;
-}
 .dropdown-content {
-  display: none;
   position: relative;
   background-color: #f3f3f3;
   min-width: 160px;
   z-index: 1;
   width: 100%;
-  top: 35px;
   padding-right: 15px;
   padding-top: 30px;
-  background-color: darkorchid;
-}
-.dropdown-content li {
-  padding: 8px 18px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  color: #707070;
-  font-family: "Segoe UI";
-  font-weight: 300;
-  /* background-color: #f3f3f3; */
 }
 
-.dropdown-content li:hover {
-  background-color: #d36e6e;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 .img {
   width: 24px;
   height: 24px;
 }
-.flex-box{
-  display:flex;
+.flex-box {
+  display: flex;
   justify-content: space-between;
+  padding-left: 30px;
+}
+.title-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 15px;
+}
+
+.circle {
+  width: 6px;
+  height: 6px;
+  background-color: #44a0d3;
+  border-radius: 50%;
+  margin-top: 7px;
+  margin-right: 10px;
+}
+.flex-wrapper {
+  display: flex;
+  justify-content: flex-start;
 }
 </style>
