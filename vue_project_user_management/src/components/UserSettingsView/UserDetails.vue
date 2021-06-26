@@ -5,12 +5,12 @@
       <div class="toggleButton">
         <ToggleButton
           :toggleChecked="user.status === 'active' ? true : false"
-          @click="changeUserState(user)"
+          @click.prevent="changeUserState"
         />
       </div>
       <p>
         The user is
-        <span>{{ status === 'active' ? 'Active' : 'Inactive' }}</span>
+        <span>{{ user.status === 'active' ? 'Active' : 'Inactive' }}</span>
       </p>
     </div>
     <form>
@@ -55,8 +55,14 @@ export default {
     ToggleButton,
   },
   methods: {
-    changeUserState(user) {
-      this.$emit("changeState", user);
+    changeUserState() {
+      if(this.user.status=='active'){
+        this.user.status='disabled'
+        } else {
+          this.user.status='active';
+          }
+      console.log("changing the value",this.user);
+      this.$emit("changeState", this.user);
     },
     
   },

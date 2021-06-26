@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     toggleState(selectedUser) {
-      let newStatus = selectedUser.status === "active" ? "disabled" : "active";
+      let newStatus = selectedUser.status;
       console.log("new status");
       let newArr = this.users.map((user) => {
         if (user.id == selectedUser.id) {
