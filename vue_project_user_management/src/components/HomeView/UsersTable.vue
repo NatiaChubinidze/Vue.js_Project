@@ -40,6 +40,7 @@
               <div class="toggle-btn">
                 <ToggleButton
                   :toggleChecked="user.status === 'active' ? true : false"
+                  @click="changeState(user)"
                 />
               </div>
             </div>
@@ -130,6 +131,9 @@ export default {
     },
     toggleDeletionOption(user) {
       this.$emit("toggleDelete",user);
+    },
+    changeState(user){
+      this.$emit('toggleUserState',user);
     },
     sortByUser() {
       this.users.sort((a, b) =>

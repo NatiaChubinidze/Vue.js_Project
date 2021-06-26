@@ -6,10 +6,15 @@
         <UserInfo :user="activeUser" />
       </div>
       <div class="userDetails">
-        <UserDetails :user="activeUser" />
+        <UserDetails :user="activeUser" @changeState="toggleState($event)" />
       </div>
       <div class="userPermissions">
-        <UserPermission :user="activeUser" />
+        <UserPermission
+          :user="activeUser"
+          @changeUserRole="setRole()"
+          @assignGroupPermission="assignGroupPermissions"
+          @changePermission="assignPermissionperField($event)"
+        />
       </div>
     </div>
   </div>
@@ -39,6 +44,38 @@ export default {
       users: [...USERS],
       activeUser: {},
     };
+  },
+  methods: {
+    toggleState(selectedUser) {
+      let newStatus = selectedUser.status === "active" ? "disabled" : "active";
+      let newArr = USERS.map((user) => {
+        if (user.id == selectedUser.id) {
+          return { ...user, status: newStatus };
+        }
+        return user;
+      });
+      console.log("newArr", newArr);
+      this.USERS = [...newArr];
+      //this.users=[...newArr];
+      console.log("updated USERS", ...this.USERS);
+      console.log("updated users array", this.users);
+    },
+    setRole() {
+      let newRole = this.activeUser.role === "superAdmin" ? "admin" : "superAdmin";
+      let newArr = USERS.map((user) => {
+        if (user.id == selectedUser.id) {
+          return { ...user, status: newStatus };
+        }
+        return user;
+      });
+      console.log("newArr", newArr);
+      this.USERS = [...newArr];
+      //this.users=[...newArr];
+      console.log("updated USERS", ...this.USERS);
+      console.log("updated users array", this.users);
+    },
+    assignGroupPermissions(group) {},
+    assignPermissionperField(permission_name) {},
   },
   created() {
     this.activeUser = this.users.filter((user) => user.id == this.userId)[0];

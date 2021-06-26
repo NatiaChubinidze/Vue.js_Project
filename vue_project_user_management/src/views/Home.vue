@@ -18,6 +18,7 @@
         :filterTerm="filterTerm"
         @activeUser="setActiveUser($event)"
         @toggleDelete="changeDeletionPopUp($event)"
+        @toggleUserState="toggleState($event)"
       />
       <Pagination />
     </div>
@@ -53,6 +54,7 @@ export default {
     InvitationBox,
     DeleteUser,
   },
+
   data() {
     return {
       users: [...USERS],
@@ -60,8 +62,12 @@ export default {
       showAddUsers: false,
       filterTerm: "",
       activeUser: {},
+      
     };
   },
+mounted(){
+  console.log(USERS)
+},
 
   methods: {
     changeDeletionPopUp(event) {
@@ -106,6 +112,26 @@ export default {
       this.users=[...USERS];
       this.$forceUpdate();
       this.showDeletionWindow=false;
+    },
+    toggleState(selectedUser){
+      let newStatus=selectedUser.status==="active"?"disabled":"active";
+      let newArr=USERS.map(user=>{
+        if(user.id==selectedUser.id){
+        
+          return {...user,
+          status:newStatus};
+        } 
+        return user;
+      }); 
+      console.log("newArr", newArr);
+     
+      this.USERS=[...newArr];
+      //this.users=[...newArr];
+    
+     console.log("updated USERS", ...this.USERS);
+       
+      console.log("updated users array",this.users);
+     
     }
   },
 };

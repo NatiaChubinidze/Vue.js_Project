@@ -6,7 +6,8 @@
       <p>Super Admin</p>
       <div class="toggleBtn">
         <ToggleButton
-          :toggleChecked="user.role === 'superAdmin' ? true : false"
+          :toggleChecked="superAdmin == true ? true : false"
+          @click.prevent="toggleSuperAdmin"
         />
       </div>
     </div>
@@ -21,7 +22,10 @@
           </button>
         </div>
         <div class="toggleBtn">
-          <ToggleButton :toggleChecked="permission_group_1 ? true : false" />
+          <ToggleButton
+            :toggleChecked="permission_group_1 ? true : false"
+            @click.prevent="toggleGroupPermission('group_1')"
+          />
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_1_visibility">
@@ -35,7 +39,10 @@
             <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton :toggleChecked="value == 'true' ? true : false" />
+            <ToggleButton
+              :toggleChecked="value == 'true' ? true : false"
+              @click.prevent="togglePermissions(name, 'per_group_1')"
+            />
           </div>
         </div>
       </div>
@@ -53,6 +60,7 @@
         <div class="toggleBtn">
           <ToggleButton
             :toggleChecked="permission_group_2 === true ? true : false"
+            @click.prevent="toggleGroupPermission('group_2')"
           />
         </div>
       </div>
@@ -60,14 +68,17 @@
         <div
           class="flex-box"
           v-for="(value, name) in user.per_group_2"
-          :key="value"
+          :key="`${value} + ${name}`"
         >
           <div class="flex-wrapper">
             <div class="circle"></div>
             <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton :toggleChecked="value == 'true' ? true : false" />
+            <ToggleButton
+              :toggleChecked="value == 'true' ? true : false"
+              @click.prevent="togglePermissions(name, 'per_group_2')"
+            />
           </div>
         </div>
       </div>
@@ -82,21 +93,27 @@
           </button>
         </div>
         <div class="toggleBtn">
-          <ToggleButton :toggleChecked="permission_group_3 ? true : false" />
+          <ToggleButton
+            :toggleChecked="permission_group_3 ? true : false"
+            @click.prevent="toggleGroupPermission('group_3')"
+          />
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_3_visibility">
         <div
           class="flex-box"
           v-for="(value, name) in user.per_group_3"
-          :key="value"
+          :key="`${value} + ${name} + 123`"
         >
           <div class="flex-wrapper">
             <div class="circle"></div>
             <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton :toggleChecked="value == 'true' ? true : false" />
+            <ToggleButton
+              :toggleChecked="value == 'true' ? true : false"
+              @click.prevent="togglePermissions(name, 'per_group_13')"
+            />
           </div>
         </div>
       </div>
@@ -121,9 +138,10 @@ export default {
       permission_1_visibility: false,
       permission_2_visibility: false,
       permission_3_visibility: false,
-      permission_group_1: false,
-      permission_group_2: false,
-      permission_group_3: false,
+      permission_group_1: true,
+      permission_group_2: true,
+      permission_group_3: true,
+      superAdmin: false,
     };
   },
   methods: {
@@ -136,33 +154,134 @@ export default {
     togglePermissionThree() {
       this.permission_3_visibility = !this.permission_3_visibility;
     },
-  },
-  created() {
-    console.log(this.user.per_group_3);
-    for (const item in this.user.per_group_1) {
-      console.log(item);
-      if (this.user.per_group_1.item === "true") {
-        this.permission_group_1 = true;
+    toggleSuperAdmin() {
+      this.superAdmin = !this.superAdmin;
+      console.log("toggle super admin",this.superAdmin);
+      if (this.superAdmin == true) {
+        this.permission_group_1 = this.permission_group_2 = this.permission_group_3 = true;
+      } else {
+        this.permission_group_1 = this.permission_group_2 = this.permission_group_3 = false;
       }
-    }
+      console.log("new group permissions", this.permission_group_1, this.permission_group_2,this.permission_group_3)
+      // this.setPermissionGroupStatus();
+      this.setPermissions();
+      //this.$emit('changeUserRole');
+      console.log(this.user);
+    },
 
-    for (const item in this.user.per_group_2) {
-      console.log(item);
-      if (this.user.per_group_2[item] === "true") {
+    toggleGroupPermission(group) {
+      switch (group) {
+        case "group_1":
+          this.permission_group_1 = !this.permission_group_1;
+          this.setPermissions();
+          this.setSuperAdmin();
+          return;
+
+        case "group_2":
+          this.permission_group_2 = !this.permission_group_2;
+          this.setPermissions();
+          this.setSuperAdmin();
+          return;
+        case "group_3":
+          this.permission_group_3 = !this.permission_group_3;
+          this.setPermissions();
+          this.setSuperAdmin();
+          return;
+      }
+      this.setSuperAdmin();
+      //this.$emit('assignGroupPermission',group);
+    },
+    togglePermissions(permission_name, permission_group) {
+      if (this.user[permission_group][permission_name] == "true") {
+        this.user[permission_group][permission_name] = "false";
+        //this.$emit("changePermission", permission_name);
+      } else {
+        this.user[permission_group][permission_name] = "true";
+      }
+      this.setPermissionGroupStatus();
+      this.setSuperAdmin();
+    },
+    setSuperAdmin() {
+      if (
+        this.permission_group_1 &&
+        this.permission_group_2 &&
+        this.permission_group_3
+      ) {
+        this.superAdmin = true;
+      } else {
+        this.superAdmin = false;
+      }
+    },
+    setPermissionGroupStatus() {
+      console.log("set permission group status")
+      this.permission_group_1 = true;
         this.permission_group_2 = true;
+          this.permission_group_3 = true;
+      for (const item in this.user.per_group_1) {
+        
+        if (this.user.per_group_1[item] == "false") {
+          this.permission_group_1 = false;
+        }
       }
-    }
 
-    for (const item in this.user.per_group_3) {
-      console.log(item);
-      if (this.user.per_group_3[item] === "true") {
-        this.permission_group_3 = true;
+      for (const item in this.user.per_group_2) {
+      
+        if (this.user.per_group_2[item] == "false") {
+          this.permission_group_2 = false;
+        }
       }
-    }
+
+      for (const item in this.user.per_group_3) {
+      
+        if (this.user.per_group_3[item] == "false") {
+          this.permission_group_3 = false;
+        }
+      }
+      console.log("permissions set", this.permission_group_1, this.permission_group_2, this.permission_group_3);
+    },
+    setPermissions() {
+      console.log("set permissionss");
+      if (this.permission_group_1 == true) {
+        for (const item in this.user.per_group_1) {
+          this.user.per_group_1[item] = "true";
+        }
+      } else {
+        for (const item in this.user.per_group_1) {
+          this.user.per_group_1[item] = "false";
+        }
+      }
+      if (this.permission_group_2 == true) {
+        for (const item in this.user.per_group_2) {
+          this.user.per_group_2[item] = "true";
+        }
+      } else {
+        for (const item in this.user.per_group_2) {
+          this.user.per_group_2[item] = "false";
+        }
+      }
+      if (this.permission_group_3 == true) {
+        for (const item in this.user.per_group_3) {
+          this.user.per_group_3[item] = "true";
+        }
+      } else {
+        for (const item in this.user.per_group_3) {
+          this.user.per_group_3[item] = "false";
+        }
+      }
+    },
   },
+  // created() {
+  //   console.log("created");
+  //   this.setPermissionGroupStatus();
+  //   this.setSuperAdmin();
+  // },
+  beforeMount(){
+    console.log("before mount");
+    this.setPermissionGroupStatus();
+     this.setSuperAdmin();
+    }
 };
 </script>
-
 
 <style scoped>
 .wrapper {

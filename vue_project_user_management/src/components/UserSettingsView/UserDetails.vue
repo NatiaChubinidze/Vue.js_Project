@@ -4,7 +4,7 @@
     <div class="flex-box">
       <div class="toggleButton">
         <ToggleButton
-          :toggleChecked="user.status === 'active' ? true : false"
+          :toggleChecked="user.status === 'active' ? true : false" @click="changeUserState(user)"
         />
       </div>
       <p>
@@ -52,6 +52,11 @@ export default {
   },
   components: {
     ToggleButton,
+  },
+  methods:{
+    changeUserState(user){
+      this.$emit('changeState',user);
+    }
   },
   data() {
     return {
