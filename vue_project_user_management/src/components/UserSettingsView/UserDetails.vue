@@ -4,12 +4,13 @@
     <div class="flex-box">
       <div class="toggleButton">
         <ToggleButton
-          :toggleChecked="user.status === 'active' ? true : false" @click="changeUserState(user)"
+          :toggleChecked="user.status === 'active' ? true : false"
+          @click="changeUserState(user)"
         />
       </div>
       <p>
         The user is
-        <span>{{ user.status === "active" ? "Active" : "Inactive" }}</span>
+        <span>{{ status === 'active' ? 'Active' : 'Inactive' }}</span>
       </p>
     </div>
     <form>
@@ -53,21 +54,22 @@ export default {
   components: {
     ToggleButton,
   },
-  methods:{
-    changeUserState(user){
-      this.$emit('changeState',user);
-    }
+  methods: {
+    changeUserState(user) {
+      this.$emit("changeState", user);
+    },
+    
   },
   data() {
     return {
       firstName: this.user.name.split(" ")[0],
       lastName: this.user.name.split(" ")[1],
       role: this.user.role,
+      status:this.user.role
     };
   },
 };
 </script>
-
 
 <style scoped>
 .wrapper {
@@ -83,7 +85,7 @@ h3 {
   letter-spacing: 0px;
   color: #000000;
   margin-bottom: 40px;
-  margin-left:20px;
+  margin-left: 20px;
 }
 .flex-box {
   width: 210px;

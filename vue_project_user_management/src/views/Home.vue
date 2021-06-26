@@ -31,7 +31,7 @@
       :user="activeUser"
       @deleteUser="deleteConcreteUser($event)"
       @toggleDeletion="closeDeletionPopUp($event)"
-      v-bind:class="showDeletionWindow===true ? 'pop-up' : 'd-none'"
+      v-bind:class="showDeletionWindow === true ? 'pop-up' : 'd-none'"
     />
   </div>
 </template>
@@ -62,17 +62,16 @@ export default {
       showAddUsers: false,
       filterTerm: "",
       activeUser: {},
-      
     };
   },
 
   methods: {
     changeDeletionPopUp(event) {
       this.showDeletionWindow = true;
-      this.activeUser={...event};
+      this.activeUser = { ...event };
     },
-    closeDeletionPopUp(event){
-      this.showDeletionWindow=event;
+    closeDeletionPopUp(event) {
+      this.showDeletionWindow = event;
     },
     changeAddUserOption(event) {
       this.showAddUsers = event;
@@ -86,49 +85,54 @@ export default {
     },
     addNewUser(event) {
       console.log("adding new user to the database...");
-      USERS.unshift(event);
-      console.log(USERS);
-      this.users = [...USERS];
-      this.$forceUpdate();
-      //It's not re-rendering automatically, so I had to force an update
-      console.log("forced...", USERS);
-      console.log(this.users);
+      let clonedUsers = [...this.users];
+      clonedUsers.unshift(event);
+      this.users = [...clonedUsers];
+      this.saveDataToLocalStorage();
     },
-    deleteConcreteUser(event){
+    deleteConcreteUser(event) {
       let elementIndex;
-      USERS.forEach(user=>{
-        if(user.id===event.id){
-          elementIndex=USERS.indexOf(user);
+      let clonedArray = [...this.users];
+      clonedArray.forEach((user) => {
+        if (user.id === event.id) {
+          elementIndex = clonedArray.indexOf(user);
         }
       });
-      if(elementIndex>=0){
-        USERS.splice(elementIndex,1);
+      if (elementIndex >= 0) {
+        clonedArray.splice(elementIndex, 1);
       }
-      console.log(USERS);
-      
-      this.users=[...USERS];
+      this.users = [...clonedArray];
+      console.log(this.users);
       this.$forceUpdate();
-      this.showDeletionWindow=false;
+      this.showDeletionWindow = false;
+      this.saveDataToLocalStorage();
+      this.$forceUpdate();
     },
-    toggleState(selectedUser){
-      let newStatus=selectedUser.status==="active"?"disabled":"active";
-      let newArr=USERS.map(user=>{
-        if(user.id==selectedUser.id){
-        
-          return {...user,
-          status:newStatus};
-        } 
+    toggleState(selectedUser) {
+      let newStatus = selectedUser.status === "active" ? "disabled" : "active";
+      let newArr = this.users.map((user) => {
+        if (user.id == selectedUser.id) {
+          return { ...user, status: newStatus };
+        }
         return user;
-      }); 
-      console.log("newArr", newArr);
-     
-      this.USERS=[...newArr];
-      //this.users=[...newArr];
-    
-     console.log("updated USERS", ...this.USERS);
-       
-      console.log("updated users array",this.users);
-     
+      });
+
+      this.users = [...newArr];
+      console.log("updated users array", this.users);
+      this.saveDataToLocalStorage();
+    },
+    saveDataToLocalStorage() {
+      const usersData = JSON.stringify(this.users);
+      localStorage.setItem("USERS_DATA", usersData);
+    },
+  },
+  beforeMount() {
+    if (!localStorage.getItem("USERS_DATA")) {
+      this.saveDataToLocalStorage();
+      console.log("data saved");
+    } else {
+      console.log("parsed users");
+      this.users = JSON.parse(localStorage.getItem("USERS_DATA"));
     }
   },
 };

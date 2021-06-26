@@ -111,7 +111,7 @@ export default {
         },
       };
 
-      console.log(userToAdd);
+      console.log("add this user", userToAdd);
       this.$emit("inviteUser", userToAdd);
       this.toggleVisibility();
       this.invitedUser = {

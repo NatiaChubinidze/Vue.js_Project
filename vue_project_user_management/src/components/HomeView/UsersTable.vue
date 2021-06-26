@@ -5,13 +5,19 @@
         <tr class="table-header">
           <th scope="col" class="th-thumbnail"></th>
           <th scope="col" class="th-user">
-            <span @click="sortByUser">User</span>
+            <span @click="sortByUser"
+              >User <img src="../../assets/icons/down-arrow.png"
+            /></span>
           </th>
           <th scope="col" class="th-role">
-            <span @click="sortByRole">Role</span>
+            <span @click="sortByRole"
+              >Role <img src="../../assets/icons/down-arrow.png"
+            /></span>
           </th>
           <th scope="col" class="th-status">
-            <span @click="sortByStatus">Status</span>
+            <span @click="sortByStatus"
+              >Status <img src="../../assets/icons/down-arrow.png"
+            /></span>
           </th>
           <th scope="col" class="th-actions">Actions</th>
         </tr>
@@ -40,7 +46,7 @@
               <div class="toggle-btn">
                 <ToggleButton
                   :toggleChecked="user.status === 'active' ? true : false"
-                  @click="changeState(user)"
+                  @click.prevent="changeState(user)"
                 />
               </div>
             </div>
@@ -89,13 +95,11 @@ export default {
     };
   },
   watch: {
-    filterTerm: function () {
-      console.log("table component filterterm", this.filterTerm);
+    filterTerm: function() {
+      console.log("table component filterterm changed", this.filterTerm);
       if (this.filterTerm) {
-        console.log("if statement");
         let clonedArray = [...this.usersArray];
         const searchTerm = this.filterTerm.toLowerCase();
-
         let filteredArray = clonedArray.filter((user) => {
           return (
             user.name.toLowerCase().includes(searchTerm) ||
@@ -104,17 +108,15 @@ export default {
             user.status.toLowerCase().includes(searchTerm)
           );
         });
-        console.log("clonedArray", clonedArray);
         this.users = [...filteredArray];
         console.log("this users", this.users);
       } else {
-        console.log("else statement");
         this.users = [...this.usersArray];
       }
     },
     usersArray: function() {
-      console.log("users changed table compoennt");
-      this.users=[...this.usersArray];
+      console.log("table component - users array has been changed");
+      this.users = [...this.usersArray];
       console.log(this.users);
     },
   },
@@ -130,10 +132,10 @@ export default {
       });
     },
     toggleDeletionOption(user) {
-      this.$emit("toggleDelete",user);
+      this.$emit("toggleDelete", user);
     },
-    changeState(user){
-      this.$emit('toggleUserState',user);
+    changeState(user) {
+      this.$emit("toggleUserState", user);
     },
     sortByUser() {
       this.users.sort((a, b) =>
@@ -165,7 +167,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .wrapper {

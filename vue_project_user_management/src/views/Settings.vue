@@ -11,9 +11,9 @@
       <div class="userPermissions">
         <UserPermission
           :user="activeUser"
-          @changeUserRole="setRole()"
-          @assignGroupPermission="assignGroupPermissions"
-          @changePermission="assignPermissionperField($event)"
+          @toggleSuperAdmin="modifyUser($event)"
+          @toggleGroupPermission="modifyUser($event)"
+          @togglePermissions="modifyUser($event)"
         />
       </div>
     </div>
@@ -26,7 +26,7 @@ import SettingsHeader from "@/components/UserSettingsView/SettingsHeader.vue";
 import UserInfo from "@/components/UserSettingsView/UserInfo.vue";
 import UserDetails from "@/components/UserSettingsView/UserDetails.vue";
 import UserPermission from "@/components/UserSettingsView/UserPermission.vue";
-import { USERS } from "../shared/data";
+// import { USERS } from "../shared/data";
 
 export default {
   name: "Settings",
@@ -41,41 +41,47 @@ export default {
   },
   data() {
     return {
-      users: [...USERS],
+      users: JSON.parse(localStorage.getItem("USERS_DATA")),
       activeUser: {},
     };
   },
   methods: {
     toggleState(selectedUser) {
       let newStatus = selectedUser.status === "active" ? "disabled" : "active";
-      let newArr = USERS.map((user) => {
+      console.log("new status");
+      let newArr = this.users.map((user) => {
         if (user.id == selectedUser.id) {
+          console.log( { ...user, status: newStatus });
           return { ...user, status: newStatus };
         }
         return user;
       });
-      console.log("newArr", newArr);
-      this.USERS = [...newArr];
-      //this.users=[...newArr];
-      console.log("updated USERS", ...this.USERS);
+      this.users = [...newArr];
       console.log("updated users array", this.users);
+      this.saveDataToLocalStorage();
     },
-    setRole() {
-      let newRole = this.activeUser.role === "superAdmin" ? "admin" : "superAdmin";
-      let newArr = USERS.map((user) => {
-        if (user.id == selectedUser.id) {
-          return { ...user, status: newStatus };
+    
+    saveDataToLocalStorage() {
+      const usersData = JSON.stringify(this.users);
+      localStorage.setItem("USERS_DATA", usersData);
+    },
+    getDataFromLocalStorage() {
+      if (localStorage.getItem("USERS_DATA")) {
+        this.users = JSON.parse(localStorage.getItem("USERS_DATA"));
+      }
+    },
+
+    modifyUser(activeUser) {
+      let newArr = this.users.map((user) => {
+        if (user.id == activeUser.id) {
+          return { ...activeUser };
         }
         return user;
       });
-      console.log("newArr", newArr);
-      this.USERS = [...newArr];
-      //this.users=[...newArr];
-      console.log("updated USERS", ...this.USERS);
+      this.users = [...newArr];
       console.log("updated users array", this.users);
+      this.saveDataToLocalStorage();
     },
-    assignGroupPermissions(group) {},
-    assignPermissionperField(permission_name) {},
   },
   created() {
     this.activeUser = this.users.filter((user) => user.id == this.userId)[0];

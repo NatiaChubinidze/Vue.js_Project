@@ -14,12 +14,9 @@
 <script>
 export default {
   name: "SettingsHeader",
-  props: {
-   
-  },
+  props: {},
 };
 </script>
-
 
 <style scoped>
 .box {

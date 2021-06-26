@@ -15,11 +15,13 @@
           </div>
           <div class="userInfo">
             <button class="dropbtn">
-              <span> {{user.name}} </span>
+              <span> {{ user.name }} </span>
             </button>
           </div>
           <div class="activeUser">
-            <span>{{user.status==="active"?'Active User':'Inactive User'}}</span>
+            <span>{{
+              user.status === "active" ? "Active User" : "Inactive User"
+            }}</span>
           </div>
         </div>
 
@@ -35,20 +37,18 @@
 export default {
   name: "DeleteUser",
   props: {
-    user:Object
+    user: Object,
   },
   methods: {
     emitVisibility() {
-      console.log("toggle deletion false");
       this.$emit("toggleDeletion", false);
     },
-    deleteUser(){
-      this.$emit('deleteUser',this.user);
-    }
+    deleteUser() {
+      this.$emit("deleteUser", this.user);
+    },
   },
 };
 </script>
-
 
 <style scoped>
 .invitation {

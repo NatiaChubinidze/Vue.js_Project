@@ -156,17 +156,21 @@ export default {
     },
     toggleSuperAdmin() {
       this.superAdmin = !this.superAdmin;
-      console.log("toggle super admin",this.superAdmin);
+      console.log("toggle super admin", this.superAdmin);
       if (this.superAdmin == true) {
         this.permission_group_1 = this.permission_group_2 = this.permission_group_3 = true;
       } else {
         this.permission_group_1 = this.permission_group_2 = this.permission_group_3 = false;
       }
-      console.log("new group permissions", this.permission_group_1, this.permission_group_2,this.permission_group_3)
-      // this.setPermissionGroupStatus();
+      console.log(
+        "new group permissions",
+        this.permission_group_1,
+        this.permission_group_2,
+        this.permission_group_3
+      );
       this.setPermissions();
-      //this.$emit('changeUserRole');
       console.log(this.user);
+      this.$emit("toggleSuperAdmin", this.user);
     },
 
     toggleGroupPermission(group) {
@@ -189,17 +193,17 @@ export default {
           return;
       }
       this.setSuperAdmin();
-      //this.$emit('assignGroupPermission',group);
+      this.$emit("toggleGroupPermission", this.user);
     },
     togglePermissions(permission_name, permission_group) {
       if (this.user[permission_group][permission_name] == "true") {
         this.user[permission_group][permission_name] = "false";
-        //this.$emit("changePermission", permission_name);
       } else {
         this.user[permission_group][permission_name] = "true";
       }
       this.setPermissionGroupStatus();
       this.setSuperAdmin();
+      this.$emit("togglePermissions", this.user);
     },
     setSuperAdmin() {
       if (
@@ -213,34 +217,30 @@ export default {
       }
     },
     setPermissionGroupStatus() {
-      console.log("set permission group status")
+      console.log("set permission group status");
       this.permission_group_1 = true;
-        this.permission_group_2 = true;
-          this.permission_group_3 = true;
+      this.permission_group_2 = true;
+      this.permission_group_3 = true;
       for (const item in this.user.per_group_1) {
-        
         if (this.user.per_group_1[item] == "false") {
           this.permission_group_1 = false;
         }
       }
 
       for (const item in this.user.per_group_2) {
-      
         if (this.user.per_group_2[item] == "false") {
           this.permission_group_2 = false;
         }
       }
 
       for (const item in this.user.per_group_3) {
-      
         if (this.user.per_group_3[item] == "false") {
           this.permission_group_3 = false;
         }
       }
-      console.log("permissions set", this.permission_group_1, this.permission_group_2, this.permission_group_3);
     },
     setPermissions() {
-      console.log("set permissionss");
+      console.log("set permissions");
       if (this.permission_group_1 == true) {
         for (const item in this.user.per_group_1) {
           this.user.per_group_1[item] = "true";
@@ -270,16 +270,12 @@ export default {
       }
     },
   },
-  // created() {
-  //   console.log("created");
-  //   this.setPermissionGroupStatus();
-  //   this.setSuperAdmin();
-  // },
-  beforeMount(){
-    console.log("before mount");
+
+  beforeMount() {
+    console.log("before mounting");
     this.setPermissionGroupStatus();
-     this.setSuperAdmin();
-    }
+    this.setSuperAdmin();
+  },
 };
 </script>
 
