@@ -65,9 +65,6 @@ export default {
       
     };
   },
-mounted(){
-  console.log(USERS)
-},
 
   methods: {
     changeDeletionPopUp(event) {

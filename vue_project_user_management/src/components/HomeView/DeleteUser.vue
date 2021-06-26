@@ -66,7 +66,6 @@ export default {
   height: 300px;
   background-color: white;
   padding: 50px;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 }

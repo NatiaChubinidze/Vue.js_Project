@@ -18,12 +18,14 @@
               class="firstName"
               placeholder="* First Name"
               v-model="invitedUser.firstName"
+              required
             />
             <input
               type="text"
               class="lastName"
               placeholder="* Last Name"
               v-model="invitedUser.lastName"
+              required
             />
           </div>
           <div class="line">
@@ -35,6 +37,7 @@
               class="email"
               placeholder="* Email"
               v-model="invitedUser.email"
+              required
             />
           </div>
           <div class="line">
@@ -53,10 +56,19 @@
           </div>
 
           <div class="final-section">
-            <button class="submit-btn" @click="submitInvitation">
+            <button
+              class="submit-btn"
+              @click="submitInvitation"
+              v-bind:disabled="validateForm() ? false : true"
+            >
               Send Invitation
             </button>
-            <div class="info-div">Fill in all the fields</div>
+            <div
+              class="info-div"
+              v-bind:class="validateForm() ? 'green-text' : 'red-text'"
+            >
+              {{ validateForm() ? "Good to go" : "Fill in all the fields" }}
+            </div>
           </div>
         </div>
       </form>
@@ -102,6 +114,12 @@ export default {
       console.log(userToAdd);
       this.$emit("inviteUser", userToAdd);
       this.toggleVisibility();
+      this.invitedUser = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        role: "",
+      };
     },
     setRole(event) {
       if (event.target.tagName == "A") {
@@ -109,6 +127,47 @@ export default {
         this.invitedUser.role = event.target.innerText.toLowerCase();
         console.log(this.invitedUser.role);
       }
+    },
+    validateForm() {
+      if (
+        this.emailIsValid() &&
+        this.firstNameIsValid() &&
+        this.lastNameIsValid() &&
+        this.roleIsValid()
+      ) {
+        this.formIsValid = true;
+        return true;
+      }
+      this.formIsValid = false;
+      return false;
+    },
+    emailIsValid() {
+      if (
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+          this.invitedUser.email
+        )
+      ) {
+        return true;
+      }
+      return false;
+    },
+    firstNameIsValid() {
+      if (this.invitedUser.firstName.length > 1) {
+        return true;
+      }
+      return false;
+    },
+    lastNameIsValid() {
+      if (this.invitedUser.lastName.length > 1) {
+        return true;
+      }
+      return false;
+    },
+    roleIsValid() {
+      if (this.invitedUser.role !== "") {
+        return true;
+      }
+      return false;
     },
   },
   data() {
@@ -119,6 +178,7 @@ export default {
         email: "",
         role: "",
       },
+      formIsValid: false,
     };
   },
 };
@@ -140,7 +200,6 @@ export default {
   height: 400px;
   background-color: white;
   padding: 50px;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 }
@@ -285,6 +344,12 @@ input::placeholder {
 .submit-btn {
   width: 35%;
   border: 0px;
+  background-color: #44a0d3;
+  color: white;
+}
+.submit-btn[disabled] {
+  background-color: #c6c6c6;
+  color: gray;
 }
 .info-div {
   width: 37%;
@@ -300,5 +365,15 @@ input::placeholder {
   padding-left: 8%;
   display: flex;
   justify-content: space-between;
+}
+
+.green-text {
+  color: rgb(22, 189, 22);
+  font-weight: 300;
+}
+
+.red-text {
+  color: red;
+  font-weight: 300;
 }
 </style>
