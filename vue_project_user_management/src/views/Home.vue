@@ -81,10 +81,8 @@ export default {
     },
     setActiveUser(event) {
       this.activeUser = { ...event };
-      console.log("active user is set");
     },
     addNewUser(event) {
-      console.log("adding new user to the database...");
       let clonedUsers = [...this.users];
       clonedUsers.unshift(event);
       this.users = [...clonedUsers];
@@ -102,7 +100,6 @@ export default {
         clonedArray.splice(elementIndex, 1);
       }
       this.users = [...clonedArray];
-      console.log(this.users);
       this.$forceUpdate();
       this.showDeletionWindow = false;
       this.saveDataToLocalStorage();
@@ -118,7 +115,6 @@ export default {
       });
 
       this.users = [...newArr];
-      console.log("updated users array", this.users);
       this.saveDataToLocalStorage();
     },
     saveDataToLocalStorage() {
@@ -129,9 +125,7 @@ export default {
   beforeMount() {
     if (!localStorage.getItem("USERS_DATA")) {
       this.saveDataToLocalStorage();
-      console.log("data saved");
     } else {
-      console.log("parsed users");
       this.users = JSON.parse(localStorage.getItem("USERS_DATA"));
     }
   },

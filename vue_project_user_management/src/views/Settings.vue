@@ -48,16 +48,13 @@ export default {
   methods: {
     toggleState(selectedUser) {
       let newStatus = selectedUser.status;
-      console.log("new status");
       let newArr = this.users.map((user) => {
         if (user.id == selectedUser.id) {
-          console.log( { ...user, status: newStatus });
           return { ...user, status: newStatus };
         }
         return user;
       });
       this.users = [...newArr];
-      console.log("updated users array", this.users);
       this.saveDataToLocalStorage();
     },
     
@@ -79,7 +76,6 @@ export default {
         return user;
       });
       this.users = [...newArr];
-      console.log("updated users array", this.users);
       this.saveDataToLocalStorage();
     },
   },

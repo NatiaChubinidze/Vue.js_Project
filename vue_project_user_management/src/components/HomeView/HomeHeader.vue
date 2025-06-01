@@ -33,8 +33,6 @@ export default {
     },
   },
   renderTriggered() {
-    console.log("Header component - search term update", this.searchTerm);
-    console.log("emitting the value", this.searchTerm);
     this.$emit("newTerm", this.searchTerm);
   },
 };

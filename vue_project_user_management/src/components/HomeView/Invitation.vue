@@ -111,7 +111,6 @@ export default {
         },
       };
 
-      console.log("add this user", userToAdd);
       this.$emit("inviteUser", userToAdd);
       this.toggleVisibility();
       this.invitedUser = {
@@ -125,7 +124,6 @@ export default {
       if (event.target.tagName == "A") {
         document.getElementById("dropbtn").innerText = event.target.innerText;
         this.invitedUser.role = event.target.innerText.toLowerCase();
-        console.log(this.invitedUser.role);
       }
     },
     validateForm() {

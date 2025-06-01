@@ -156,20 +156,13 @@ export default {
     },
     toggleSuperAdmin() {
       this.superAdmin = !this.superAdmin;
-      console.log("toggle super admin", this.superAdmin);
       if (this.superAdmin == true) {
         this.permission_group_1 = this.permission_group_2 = this.permission_group_3 = true;
       } else {
         this.permission_group_1 = this.permission_group_2 = this.permission_group_3 = false;
       }
-      console.log(
-        "new group permissions",
-        this.permission_group_1,
-        this.permission_group_2,
-        this.permission_group_3
-      );
+     
       this.setPermissions();
-      console.log(this.user);
       this.$emit("toggleSuperAdmin", this.user);
     },
 
@@ -217,7 +210,6 @@ export default {
       }
     },
     setPermissionGroupStatus() {
-      console.log("set permission group status");
       this.permission_group_1 = true;
       this.permission_group_2 = true;
       this.permission_group_3 = true;
@@ -240,7 +232,6 @@ export default {
       }
     },
     setPermissions() {
-      console.log("set permissions");
       if (this.permission_group_1 == true) {
         for (const item in this.user.per_group_1) {
           this.user.per_group_1[item] = "true";
@@ -272,7 +263,6 @@ export default {
   },
 
   beforeMount() {
-    console.log("before mounting");
     this.setPermissionGroupStatus();
     this.setSuperAdmin();
   },

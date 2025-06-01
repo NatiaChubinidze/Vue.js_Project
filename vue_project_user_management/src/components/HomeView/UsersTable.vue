@@ -96,7 +96,6 @@ export default {
   },
   watch: {
     filterTerm: function() {
-      console.log("table component filterterm changed", this.filterTerm);
       if (this.filterTerm) {
         let clonedArray = [...this.usersArray];
         const searchTerm = this.filterTerm.toLowerCase();
@@ -109,15 +108,12 @@ export default {
           );
         });
         this.users = [...filteredArray];
-        console.log("this users", this.users);
       } else {
         this.users = [...this.usersArray];
       }
     },
     usersArray: function() {
-      console.log("table component - users array has been changed");
       this.users = [...this.usersArray];
-      console.log(this.users);
     },
   },
 
