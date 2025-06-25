@@ -2,13 +2,13 @@
   <div class="about">
     <SettingsHeader />
     <div class="flex-wrapper">
-      <div class="userInfo">
+      <div class="userInfo" v-if="activeUser">
         <UserInfo :user="activeUser" />
       </div>
-      <div class="userDetails">
+      <div class="userDetails" v-if="activeUser">
         <UserDetails :user="activeUser" @changeState="toggleState($event)" />
       </div>
-      <div class="userPermissions">
+      <div class="userPermissions" v-if="activeUser">
         <UserPermission
           :user="activeUser"
           @toggleSuperAdmin="modifyUser($event)"
@@ -21,12 +21,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import SettingsHeader from "@/components/UserSettingsView/SettingsHeader.vue";
 import UserInfo from "@/components/UserSettingsView/UserInfo.vue";
 import UserDetails from "@/components/UserSettingsView/UserDetails.vue";
 import UserPermission from "@/components/UserSettingsView/UserPermission.vue";
-// import { USERS } from "../shared/data";
 
 export default {
   name: "Settings",
@@ -42,7 +40,7 @@ export default {
   data() {
     return {
       users: JSON.parse(localStorage.getItem("USERS_DATA")),
-      activeUser: {},
+      activeUser: null,
     };
   },
   methods: {

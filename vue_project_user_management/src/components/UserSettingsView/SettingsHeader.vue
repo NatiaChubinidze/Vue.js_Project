@@ -22,6 +22,7 @@ export default {
 .box {
   height: 150px;
 }
+
 .header {
   width: 100%;
   height: 150px;
@@ -30,6 +31,7 @@ export default {
   justify-content: flex-end;
   box-shadow: 0px 3px 6px #00000029;
 }
+
 .wrapper {
   width: 95%;
   height: 80%;
@@ -38,6 +40,7 @@ export default {
   align-items: flex-end;
   padding: 0px 10% 10px 10%;
 }
+
 .title {
   font: normal normal 600 36px Segoe UI;
   margin: 0px;
@@ -56,6 +59,7 @@ export default {
   left: 6%;
   cursor: pointer;
 }
+
 .settings-gear img {
   width: 34px;
   height: 35px;

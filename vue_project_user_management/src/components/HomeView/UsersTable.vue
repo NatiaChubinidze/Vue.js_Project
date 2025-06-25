@@ -5,19 +5,13 @@
         <tr class="table-header">
           <th scope="col" class="th-thumbnail"></th>
           <th scope="col" class="th-user">
-            <span @click="sortByUser"
-              >User <img src="../../assets/icons/down-arrow.png"
-            /></span>
+            <span @click="sortByUser">User <img src="../../assets/icons/down-arrow.png" /></span>
           </th>
           <th scope="col" class="th-role">
-            <span @click="sortByRole"
-              >Role <img src="../../assets/icons/down-arrow.png"
-            /></span>
+            <span @click="sortByRole">Role <img src="../../assets/icons/down-arrow.png" /></span>
           </th>
           <th scope="col" class="th-status">
-            <span @click="sortByStatus"
-              >Status <img src="../../assets/icons/down-arrow.png"
-            /></span>
+            <span @click="sortByStatus">Status <img src="../../assets/icons/down-arrow.png" /></span>
           </th>
           <th scope="col" class="th-actions">Actions</th>
         </tr>
@@ -44,26 +38,17 @@
           <td class="td-status">
             <div class="toggle-wrapper">
               <div class="toggle-btn">
-                <ToggleButton
-                  :toggleChecked="user.status === 'active' ? true : false"
-                  @click.prevent="changeState(user)"
-                />
+                <ToggleButton :toggleChecked="user.status === 'active' ? true : false"
+                  @click.prevent="changeState(user)" />
               </div>
             </div>
           </td>
           <td class="td-actions">
             <div class="cont-wrapper">
               <div class="actions">
-                <img
-                  class="settings-img"
-                  src="../../assets/icons/settings.png"
-                  v-on:click="navigate(user)"
-                />
-                <img
-                  class="recycleBin-img"
-                  src="../../assets/icons/recycle.png"
-                  v-on:click="toggleDeletionOption(user)"
-                />
+                <img class="settings-img" src="../../assets/icons/settings.png" v-on:click="navigate(user)" />
+                <img class="recycleBin-img" src="../../assets/icons/recycle.png"
+                  v-on:click="toggleDeletionOption(user)" />
               </div>
             </div>
           </td>
@@ -95,7 +80,7 @@ export default {
     };
   },
   watch: {
-    filterTerm: function() {
+    filterTerm: function () {
       if (this.filterTerm) {
         let clonedArray = [...this.usersArray];
         const searchTerm = this.filterTerm.toLowerCase();
@@ -112,7 +97,7 @@ export default {
         this.users = [...this.usersArray];
       }
     },
-    usersArray: function() {
+    usersArray: function () {
       this.users = [...this.usersArray];
     },
   },
@@ -176,28 +161,35 @@ table th {
   padding-bottom: 30px;
   border: 0px;
 }
+
 table th span {
   cursor: pointer;
 }
+
 table th:not(:first-child) {
   border-bottom: 2px solid #00000029 !important;
 }
+
 table td {
   height: 80px;
   padding-top: 20px;
   padding-left: 0px;
 }
+
 table p {
   width: fit-content;
   margin: 0px;
 }
+
 .user-info p {
   font: normal normal 300 16px/21px Segoe UI;
   letter-spacing: 0px;
 }
+
 .user-info span {
   width: fit-content;
 }
+
 .user-info {
   width: 100%;
   height: 100%;
@@ -213,16 +205,20 @@ table p {
   padding-left: 13px;
   width: 120px;
 }
+
 .thumbnail img {
   width: 45.64px;
   height: 45.64px;
 }
+
 .th-user {
   text-align: left;
 }
+
 .th-role {
   width: 190px;
 }
+
 .th-actions {
   width: 100px;
 }
@@ -237,6 +233,7 @@ table p {
 .td-role p {
   margin-top: 5px;
 }
+
 .admin-div {
   width: 48px;
   height: 32px;
@@ -248,17 +245,21 @@ table p {
   align-items: center;
   margin-right: 20px;
 }
+
 .admin-div img {
   width: 24px;
   height: 24px;
 }
+
 .td-status {
   text-align: center;
   padding-left: 20px;
 }
+
 .td-actions {
   text-align: right;
 }
+
 .actions {
   width: 50px;
   height: 100%;
@@ -268,24 +269,29 @@ table p {
   padding-top: 7px;
   justify-self: flex-end;
 }
+
 .settings-img {
   width: 18px;
   height: 18px;
 }
+
 .recycleBin-img {
   width: 13px;
   height: 18px;
 }
+
 .settings-img:hover,
 .recycleBin-img:hover {
   cursor: pointer;
 }
+
 .cont-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
 }
+
 .toggle-wrapper {
   width: 100%;
   height: 100%;
@@ -293,6 +299,7 @@ table p {
   justify-content: center;
   align-items: center;
 }
+
 .toggle-btn {
   width: 100px;
   height: 25px;

@@ -1,11 +1,7 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img
-        src="../../assets/icons/cancel.png"
-        class="cancel"
-        @click="emitVisibility"
-      />
+      <img src="../../assets/icons/cancel.png" class="cancel" @click="emitVisibility" />
       <h3>Delete User</h3>
 
       <div class="form-wrapper">
@@ -58,6 +54,7 @@ export default {
   width: 100%;
   height: 500px;
 }
+
 .invitation-box {
   position: absolute;
   top: calc((100vh - 350px) / 2);
@@ -77,6 +74,7 @@ export default {
   width: 12px;
   cursor: pointer;
 }
+
 h3 {
   font-family: "Segoe UI";
   font-weight: 600;
@@ -86,6 +84,7 @@ h3 {
   text-align: left;
   margin-bottom: 50px;
 }
+
 .form-wrapper {
   display: flex;
   justify-content: space-between;
@@ -102,6 +101,7 @@ h3 {
   display: flex;
   justify-content: space-between;
 }
+
 .dropbtn {
   background-color: white;
   color: #707070;
@@ -135,6 +135,7 @@ h3 {
   justify-content: center;
   align-items: flex-start;
 }
+
 .icon img {
   width: 18px;
   margin-top: 2px;
@@ -148,6 +149,7 @@ h3 {
 .icon img.img {
   margin-top: 5px;
 }
+
 .delete-btn,
 .info-div {
   height: 40px;
@@ -156,6 +158,7 @@ h3 {
   font-weight: 600;
   font-size: 14px;
 }
+
 .delete-btn {
   width: 35%;
   border: 0px;
@@ -170,10 +173,12 @@ h3 {
   display: flex;
   justify-content: space-between;
 }
+
 .userInfo,
 .activeUser {
   border-bottom: 2px solid #ccc9c9 !important;
 }
+
 .activeUser {
   font-size: 16px;
   border: 0px;

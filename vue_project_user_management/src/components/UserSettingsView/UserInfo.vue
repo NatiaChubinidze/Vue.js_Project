@@ -31,15 +31,18 @@ export default {
   padding: 40px 90px;
   align-items: center;
 }
+
 .box {
   position: relative;
   width: 232px;
   margin: 0 auto;
   height: fit-content;
 }
+
 .profile-pic {
   width: 100%;
 }
+
 .admin-div {
   position: absolute;
   width: 77px;
@@ -53,10 +56,12 @@ export default {
   bottom: 20px;
   left: 160px;
 }
+
 .admin-div img {
   width: 24px;
   height: 24px;
 }
+
 .wrapper span {
   text-transform: uppercase;
   margin-top: 20px;
@@ -65,6 +70,7 @@ export default {
   letter-spacing: 0px;
   color: #b0acac;
 }
+
 .name {
   font: normal normal 600 48px/48px Segoe UI;
   letter-spacing: 0px;
@@ -72,6 +78,7 @@ export default {
   size: 48px;
   font-style: 600;
 }
+
 .email {
   font: normal normal 300 16px/21px Segoe UI;
   letter-spacing: 0px;
@@ -79,6 +86,7 @@ export default {
   margin-top: 5px;
   margin-bottom: 47px;
 }
+
 .submit-btn {
   height: 59px;
   padding: 5px;

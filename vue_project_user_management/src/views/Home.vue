@@ -37,7 +37,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HomeHeader from "@/components/HomeView/HomeHeader.vue";
 import UsersTable from "@/components/HomeView/UsersTable.vue";
 import Pagination from "@/components/HomeView/Pagination.vue";

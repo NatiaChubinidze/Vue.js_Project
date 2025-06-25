@@ -1,11 +1,7 @@
 <template>
   <div class="invitation">
     <div class="invitation-box">
-      <img
-        src="../../assets/icons/cancel.png"
-        class="cancel"
-        @click="toggleVisibility"
-      />
+      <img src="../../assets/icons/cancel.png" class="cancel" @click="toggleVisibility" />
       <h3>Invite New User</h3>
       <form>
         <div class="form-wrapper">
@@ -13,32 +9,14 @@
             <div class="icon">
               <img src="../../assets/icons/boy.png" class="img" />
             </div>
-            <input
-              type="text"
-              class="firstName"
-              placeholder="* First Name"
-              v-model="invitedUser.firstName"
-              required
-            />
-            <input
-              type="text"
-              class="lastName"
-              placeholder="* Last Name"
-              v-model="invitedUser.lastName"
-              required
-            />
+            <input type="text" class="firstName" placeholder="* First Name" v-model="invitedUser.firstName" required />
+            <input type="text" class="lastName" placeholder="* Last Name" v-model="invitedUser.lastName" required />
           </div>
           <div class="line">
             <div class="icon">
               <img src="../../assets/icons/arroba.png" class="img" />
             </div>
-            <input
-              type="email"
-              class="email"
-              placeholder="* Email"
-              v-model="invitedUser.email"
-              required
-            />
+            <input type="email" class="email" placeholder="* Email" v-model="invitedUser.email" required />
           </div>
           <div class="line">
             <div class="icon">
@@ -56,17 +34,10 @@
           </div>
 
           <div class="final-section">
-            <button
-              class="submit-btn"
-              @click="submitInvitation"
-              v-bind:disabled="validateForm() ? false : true"
-            >
+            <button class="submit-btn" @click="submitInvitation" v-bind:disabled="validateForm() ? false : true">
               Send Invitation
             </button>
-            <div
-              class="info-div"
-              v-bind:class="validateForm() ? 'green-text' : 'red-text'"
-            >
+            <div class="info-div" v-bind:class="validateForm() ? 'green-text' : 'red-text'">
               {{ validateForm() ? "Good to go" : "Fill in all the fields" }}
             </div>
           </div>
@@ -190,6 +161,7 @@ export default {
   width: 100%;
   height: 500px;
 }
+
 .invitation-box {
   position: absolute;
   top: calc((100vh - 350px) / 2);
@@ -209,6 +181,7 @@ export default {
   width: 12px;
   cursor: pointer;
 }
+
 h3 {
   font-family: "Segoe UI";
   font-weight: 600;
@@ -218,6 +191,7 @@ h3 {
   text-align: left;
   margin-bottom: 50px;
 }
+
 .form-wrapper {
   display: flex;
   justify-content: space-between;
@@ -227,16 +201,19 @@ h3 {
   flex-direction: column;
   flex-wrap: nowrap;
 }
+
 form {
   width: 100%;
   height: 100%;
 }
+
 .line {
   width: 100%;
   height: fit-content;
   display: flex;
   justify-content: space-between;
 }
+
 .dropbtn {
   background-color: white;
   color: #707070;
@@ -255,6 +232,7 @@ form {
   width: 45%;
   height: 28px;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -287,9 +265,11 @@ form {
 .lastName {
   width: 45%;
 }
+
 .email {
   width: 91.5%;
 }
+
 .icon {
   width: 7%;
   height: 28px;
@@ -298,13 +278,16 @@ form {
   justify-content: center;
   align-items: flex-start;
 }
+
 .icon img {
   width: 18px;
   margin-top: 2px;
 }
+
 input:focus {
   outline: none;
 }
+
 input,
 .dropbtn {
   border: 0px;
@@ -314,23 +297,28 @@ input,
   font-family: "Segoe UI";
   font-weight: 300;
 }
+
 input::placeholder {
   color: #707070;
   font-family: "Segoe UI";
   font-weight: 300;
 }
+
 .invisible {
   width: 45%;
 }
+
 .arrow {
   width: 12px;
   position: absolute;
   top: 10px;
   right: 5px;
 }
+
 .icon img.img {
   margin-top: 5px;
 }
+
 .submit-btn,
 .info-div {
   height: 40px;
@@ -339,16 +327,19 @@ input::placeholder {
   font-weight: 600;
   font-size: 14px;
 }
+
 .submit-btn {
   width: 35%;
   border: 0px;
   background-color: #44a0d3;
   color: white;
 }
+
 .submit-btn[disabled] {
   background-color: #c6c6c6;
   color: gray;
 }
+
 .info-div {
   width: 37%;
   display: flex;

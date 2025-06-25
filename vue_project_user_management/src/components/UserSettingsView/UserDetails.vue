@@ -3,10 +3,7 @@
     <h3>Details</h3>
     <div class="flex-box">
       <div class="toggleButton">
-        <ToggleButton
-          :toggleChecked="user.status === 'active' ? true : false"
-          @click.prevent="changeUserState"
-        />
+        <ToggleButton :toggleChecked="user.status === 'active' ? true : false" @click.prevent="changeUserState" />
       </div>
       <p>
         The user is
@@ -16,12 +13,7 @@
     <form>
       <div class="line">
         <label for="firstName">*First Name</label>
-        <input
-          type="text"
-          class="firstName"
-          id="firstName"
-          v-model="firstName"
-        />
+        <input type="text" class="firstName" id="firstName" v-model="firstName" />
       </div>
       <div class="line">
         <label for="lastName">*Last Name</label>
@@ -56,24 +48,30 @@ export default {
   },
   methods: {
     changeUserState() {
-      if(this.user.status=='active'){
-        this.user.status='disabled'
-        } else {
-          this.user.status='active';
-          }
-      console.log("changing the value",this.user);
+      if (this.user.status == 'active') {
+        this.user.status = 'disabled'
+      } else {
+        this.user.status = 'active';
+      }
+
       this.$emit("changeState", this.user);
     },
-    
+
   },
-  data() {
-    return {
-      firstName: this.user.name.split(" ")[0],
-      lastName: this.user.name.split(" ")[1],
-      role: this.user.role,
-      status:this.user.role
-    };
+  computed: {
+  firstName() {
+    return this.user?.name?.split(" ")[0] || '';
   },
+  lastName() {
+    return this.user?.name?.split(" ")[1] || '';
+  },
+  role() {
+    return this.user?.role || '';
+  },
+  status() {
+    return this.user?.status || '';
+  }
+}
 };
 </script>
 
@@ -86,6 +84,7 @@ export default {
   padding: 40px 50px;
   align-items: flex-start;
 }
+
 h3 {
   font: normal normal 600 36px/48px Segoe UI;
   letter-spacing: 0px;
@@ -93,6 +92,7 @@ h3 {
   margin-bottom: 40px;
   margin-left: 20px;
 }
+
 .flex-box {
   width: 210px;
   display: flex;
@@ -100,19 +100,23 @@ h3 {
   align-self: flex-start;
   margin-bottom: 30px;
 }
+
 .flex-box p {
   font-size: 16px;
   font-family: "Segoe UI";
   width: 220px;
   margin: 0px;
 }
+
 .flex-box p span {
   font-weight: bold;
 }
+
 .toggleButton {
   width: 80px;
   height: 30px;
 }
+
 form {
   width: 100%;
   height: fit-content;
@@ -121,12 +125,14 @@ form {
   flex-direction: column;
   align-items: flex-end;
 }
+
 .line {
   width: 100%;
   height: fit-content;
 
   margin-bottom: 20px;
 }
+
 .dropbtn {
   background-color: white;
   color: #707070;
@@ -145,6 +151,7 @@ form {
   width: 100%;
   height: 35px;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -184,6 +191,7 @@ form {
 input:focus {
   outline: none;
 }
+
 input,
 .dropbtn {
   border: 0px;
@@ -196,20 +204,24 @@ input,
   letter-spacing: 0px;
   color: #000000;
 }
+
 input::placeholder {
   color: #707070;
   font-family: "Segoe UI";
   font-weight: 300;
 }
+
 .invisible {
   width: 45%;
 }
+
 .arrow {
   width: 12px;
   position: absolute;
   top: 10px;
   right: 5px;
 }
+
 .line label {
   display: flex;
   justify-self: flex-start;
@@ -220,6 +232,7 @@ input::placeholder {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
 .save {
   height: 59px;
   padding: 5px;

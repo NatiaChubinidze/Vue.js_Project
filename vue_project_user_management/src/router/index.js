@@ -9,7 +9,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/settings",
+    path: "/settings/:userId",
     name: "Settings",
     component: Settings,
     props: true,

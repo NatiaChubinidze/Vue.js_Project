@@ -19,7 +19,7 @@
 export default {
   name: "Pagination",
   props: {
-   
+
   },
 };
 </script>
@@ -34,12 +34,14 @@ export default {
   padding-left: 6%;
   padding-right: 10%;
 }
+
 .wrapper {
   display: flex;
   width: 310px;
   justify-content: space-between;
   padding-left: 120px;
 }
+
 .light {
   background-color: #f3f3f3;
   width: 50px;
@@ -51,12 +53,15 @@ export default {
   background-color: #f3f3f3 !important;
   /* border:0px; */
 }
+
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
 .dropdown {
   display: inline-block;
 }
+
 .arrow {
   width: 10px;
   position: relative;

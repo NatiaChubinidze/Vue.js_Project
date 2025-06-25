@@ -5,10 +5,7 @@
     <div class="super-admin">
       <p>Super Admin</p>
       <div class="toggleBtn">
-        <ToggleButton
-          :toggleChecked="superAdmin == true ? true : false"
-          @click.prevent="toggleSuperAdmin"
-        />
+        <ToggleButton :toggleChecked="superAdmin == true ? true : false" @click.prevent="toggleSuperAdmin" />
       </div>
     </div>
     <hr />
@@ -22,27 +19,19 @@
           </button>
         </div>
         <div class="toggleBtn">
-          <ToggleButton
-            :toggleChecked="permission_group_1 ? true : false"
-            @click.prevent="toggleGroupPermission('group_1')"
-          />
+          <ToggleButton :toggleChecked="permission_group_1 ? true : false"
+            @click.prevent="toggleGroupPermission('group_1')" />
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_1_visibility">
-        <div
-          class="flex-box"
-          v-for="(value, name) in user.per_group_1"
-          :key="value"
-        >
+        <div class="flex-box" v-for="(value, name) in user.per_group_1" :key="value">
           <div class="flex-wrapper">
             <div class="circle"></div>
             <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton
-              :toggleChecked="value == 'true' ? true : false"
-              @click.prevent="togglePermissions(name, 'per_group_1')"
-            />
+            <ToggleButton :toggleChecked="value == 'true' ? true : false"
+              @click.prevent="togglePermissions(name, 'per_group_1')" />
           </div>
         </div>
       </div>
@@ -58,27 +47,19 @@
           </button>
         </div>
         <div class="toggleBtn">
-          <ToggleButton
-            :toggleChecked="permission_group_2 === true ? true : false"
-            @click.prevent="toggleGroupPermission('group_2')"
-          />
+          <ToggleButton :toggleChecked="permission_group_2 === true ? true : false"
+            @click.prevent="toggleGroupPermission('group_2')" />
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_2_visibility">
-        <div
-          class="flex-box"
-          v-for="(value, name) in user.per_group_2"
-          :key="`${value} + ${name}`"
-        >
+        <div class="flex-box" v-for="(value, name) in user.per_group_2" :key="`${value} + ${name}`">
           <div class="flex-wrapper">
             <div class="circle"></div>
             <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton
-              :toggleChecked="value == 'true' ? true : false"
-              @click.prevent="togglePermissions(name, 'per_group_2')"
-            />
+            <ToggleButton :toggleChecked="value == 'true' ? true : false"
+              @click.prevent="togglePermissions(name, 'per_group_2')" />
           </div>
         </div>
       </div>
@@ -93,27 +74,19 @@
           </button>
         </div>
         <div class="toggleBtn">
-          <ToggleButton
-            :toggleChecked="permission_group_3 ? true : false"
-            @click.prevent="toggleGroupPermission('group_3')"
-          />
+          <ToggleButton :toggleChecked="permission_group_3 ? true : false"
+            @click.prevent="toggleGroupPermission('group_3')" />
         </div>
       </div>
       <div class="dropdown-content" v-if="permission_3_visibility">
-        <div
-          class="flex-box"
-          v-for="(value, name) in user.per_group_3"
-          :key="`${value} + ${name} + 123`"
-        >
+        <div class="flex-box" v-for="(value, name) in user.per_group_3" :key="`${value} + ${name} + 123`">
           <div class="flex-wrapper">
             <div class="circle"></div>
             <p>{{ name }}</p>
           </div>
           <div class="toggleBtn">
-            <ToggleButton
-              :toggleChecked="value == 'true' ? true : false"
-              @click.prevent="togglePermissions(name, 'per_group_13')"
-            />
+            <ToggleButton :toggleChecked="value == 'true' ? true : false"
+              @click.prevent="togglePermissions(name, 'per_group_13')" />
           </div>
         </div>
       </div>
@@ -161,7 +134,7 @@ export default {
       } else {
         this.permission_group_1 = this.permission_group_2 = this.permission_group_3 = false;
       }
-     
+
       this.setPermissions();
       this.$emit("toggleSuperAdmin", this.user);
     },
@@ -279,6 +252,7 @@ export default {
   padding: 40px 30px;
   align-items: flex-start;
 }
+
 h3 {
   font: normal normal 600 36px/48px Segoe UI;
   letter-spacing: 0px;
@@ -286,6 +260,7 @@ h3 {
   margin-bottom: 40px;
   margin-left: 20px;
 }
+
 p {
   width: fit-content;
 }
@@ -297,18 +272,22 @@ p {
   padding-left: 24px;
   padding-right: 15px;
 }
+
 .toggleBtn {
   width: 80px;
   height: 25px;
 }
+
 .super-admin p {
   font: normal normal bold 16px/21px Segoe UI;
   letter-spacing: 0px;
   color: #000000;
 }
+
 hr {
   width: 100%;
 }
+
 .permission_group {
   display: flex;
   flex-direction: column;
@@ -318,16 +297,19 @@ hr {
   letter-spacing: 0px;
   color: #000000;
 }
+
 .permission-title {
   width: 80%;
   height: fit-content;
   margin-bottom: 20px;
 }
+
 .permission-disabled {
   font: normal normal 300 16px/21px Segoe UI;
   letter-spacing: 0px;
   color: #000000;
 }
+
 .dropbtn {
   background-color: #f3f3f3;
   padding: 0px 17px 0px 2px;
@@ -356,11 +338,13 @@ hr {
   width: 24px;
   height: 24px;
 }
+
 .flex-box {
   display: flex;
   justify-content: space-between;
   padding-left: 30px;
 }
+
 .title-line {
   display: flex;
   justify-content: space-between;
@@ -376,6 +360,7 @@ hr {
   margin-top: 7px;
   margin-right: 10px;
 }
+
 .flex-wrapper {
   display: flex;
   justify-content: flex-start;
